@@ -1,0 +1,293 @@
+.displayNone
+    display: none
+
+body
+    font-family: 'PT Serif', serif
+
+img
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -o-user-select: none
+    user-select: none
+
+*:focus
+    outline: none
+
+.mainLoginInput
+    &::-webkit-input-placeholder, &:-ms-input-placeholder, &:-moz-placeholder
+        font-family: 'PT Serif', serif
+
+.inline
+    display: inline
+
+.wrapper
+    width: 100%
+
+.container_basic
+    max-width: 800px
+    padding: 0 8px 0 8px
+    margin: auto
+
+.container_donjon
+    max-width: 600px
+    padding: 0 8px 0 8px
+    margin: auto
+
+.container_login
+    display: flex
+    flex-direction: column
+    align-items: center
+
+.aligner
+    position: relative
+    top: -10vh
+    width: 100%
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+.logout
+    position: fixed
+    top: 8px
+    right: 8px
+
+.s_img
+    max-width: 25px
+
+.game-title
+    margin-top: 10vh
+    display: flex
+    justify-content: center
+    margin-bottom: 12vh
+
+    h1
+        font-size: 55px
+
+.form-container
+    width: 360px
+    display: flex
+    justify-content: center
+    flex-direction: column
+
+.border
+    margin: 4px 0 4px 0
+    width: 100%
+    border-bottom: 1px solid #111
+
+.form-container-login input
+    text-align: center
+
+/*
+ *FORMS
+
+p, h1
+    margin-bottom: 0
+
+input
+    display: block
+    width: 100%
+    padding: 6px 6px 6px 6px
+    background-color: #EDEDED
+    border-width: 0px
+    border: none
+
+    &[type="submit"]
+        margin-top: 20px
+        display: block
+        cursor: pointer
+
+.alert--danger
+    margin-bottom: 10px
+
+\::placeholder
+    color: #111
+
+.form_field
+    margin-bottom: 30px
+
+.basic_submit
+    width: 200px
+    text-align: start
+
+/*
+ *Page
+
+a.disabled
+    pointer-events: none
+    cursor: default
+    border: 1px solid #AA3333
+
+.underLined
+    border-bottom: 1px solid #111
+    padding-bottom: 3px
+
+.bckg-grey
+    padding: 5px
+    background-color: #EDEDED
+
+.bckg-green
+    padding: 5px
+    background-color: #82F849
+
+.menuGrid > div
+    padding: 8px
+
+.room_top
+    margin-top: 6vh
+    display: flex
+    align-items: center
+    flex-direction: column
+
+.room_title
+    font-size: 35px
+    border-bottom: 1px solid #111
+
+.room_number
+    margin-top: 10px
+
+    >
+    div
+        display: inline
+
+        .current
+            border-bottom: 1px solid #111
+
+.character
+    position: fixed
+    bottom: 8px
+    left: 8px
+    font-size: 12px
+
+.character_child
+    display: inline
+
+.character_title
+    margin-bottom: 3px
+    border-bottom: 1px solid #111
+
+.room_action
+    margin-top: 120px
+    position: relative
+    top: 0
+    left: 0
+
+.room_mj
+    position: absolute
+    top: -115px
+    left: -30px
+    width: 120px
+    height: 170px
+
+.room_mj_head > img
+    max-width: 60px
+    margin-bottom: 5px
+
+.room_mj_bubble > img
+    max-width: 120px
+
+.room_txt
+    width: 100%
+    text-align: justify
+
+.room_choices
+    width: 100%
+    margin-top: 30px
+
+    form
+        height: 34px
+
+.room_choice
+    margin-top: 15px
+    position: relative
+    top: 0
+    left: 0
+    width: calc(100% - 24px)
+    font-weight: 600
+    transition: all 0.2s ease
+
+    &:hover
+        left: 10px
+
+.skullLink
+    position: relative
+    top: 0
+    left: 0
+    transition: all 0.2s ease
+    width: 250px
+
+.skullBackLink
+    display: flex
+    justify-content: center
+    text-align: center
+
+    &:hover
+        transition: all 0.2s ease
+        left: 10px
+
+.fl
+    position: relative
+    top: -1px
+    margin: 0 5px 0 10px
+
+    > img
+        max-height: 16px
+        margin-right: 5px
+
+.full_link
+    width: 100%
+    height: 100%
+    position: absolute
+    z-index: 1
+
+.you_died
+    padding-top: 20vh
+
+.skullContainer
+    text-align: center
+
+    > img
+        height: 220px
+
+.skullMessage
+    font-size: 3em
+
+.text_center
+    text-align: center
+
+.skullComment
+    margin-top: 30px
+    text-align: center
+    margin-bottom: 30px
+
+.menuLink
+    margin-top: 15px
+    position: relative
+    top: 0
+    left: 0
+    font-weight: 600
+
+.form_button
+    text-align: left
+    font-weight: 600
+
+.createAccount
+    margin-top: 40px
+
+.light_title
+    margin-top: 10vh
+    margin-bottom: 20px
+
+    > h1
+        font-size: 55px
+
+.comment
+    margin-bottom: 8vh
+
+.username
+    position: fixed
+    top: 0
+    left: 0
+    padding: 8px
+    font-size: 12px
