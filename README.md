@@ -28,3 +28,12 @@ php artisan migrate
 ```sh
 php artisan key:generate
 ```
+
+
+## WIP :
+
+- Room API
+- Player react context
+- Room display
+- Game flux
+- Game breakers
