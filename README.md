@@ -1,12 +1,12 @@
 # Basic inertia/react in Laravel integration
 
-##Serve :
+## Serve :
 
 ```sh
 php artisan serve
 ```
 
-##Setup :
+## Setup :
 
 ```sh
 composer install
@@ -23,4 +23,8 @@ npm run dev
 
 ```sh
 php artisan migrate
+```
+
+```sh
+php artisan key:generate
 ```
