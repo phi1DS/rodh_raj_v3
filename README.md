@@ -16,7 +16,6 @@ composer install
 npm install
 ```
 
-
 ```sh
 npm run dev
 ```
@@ -29,10 +28,14 @@ php artisan migrate
 php artisan key:generate
 ```
 
+```sh
+cp .env.example .env
+```
+
+create database/database.sqlite
 
 ## WIP :
 
-- Room API
 - Player react context
 - Room display
 - Game flux
