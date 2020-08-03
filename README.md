@@ -34,6 +34,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+copy private\room_data.json into storage\app\private\room_data.json
 
 ## WIP :
 
