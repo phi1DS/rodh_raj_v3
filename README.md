@@ -25,12 +25,13 @@ php artisan migrate
 ```
 
 ```sh
-php artisan key:generate
+cp .env.example .env
 ```
 
 ```sh
-cp .env.example .env
+php artisan key:generate
 ```
+
 
 create database/database.sqlite
 
