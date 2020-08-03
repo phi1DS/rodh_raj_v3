@@ -1,4 +1,4 @@
-import React, {useState, createContext} from 'react';
+import React, {useState, createContext, useEffect} from 'react';
 import {ConstantCollection} from "../constants";
 import {fetchFromApi} from "../Services/ApiFetcher";
 
@@ -12,16 +12,22 @@ export const GameConfigProvider = ({children}) => {
         },
         maxRoomNumber: 10,
         roomNumber: 1,
-        currentRoomAction: {}
+        currentRoomAction: {
+            code: "",
+            name: "",
+            text: "",
+            choices: []
+        }
     };
 
     const [gameConfig, setGameConfig] = useState({
         ...defaultGameConfig
     });
 
-    // useEffect(() => {
-    //     // TODO fetch local storage config ?
-    // }, []);
+    useEffect(() => {
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-start', changeRoomFromResponse)
+        // TODO fetch local storage config ? | sinon prend la première
+    }, []);
 
     function roomPassed() {
         const newConfig = {...gameConfig};
@@ -34,22 +40,38 @@ export const GameConfigProvider = ({children}) => {
         setGameConfig(newConfig);
     }
 
-    function changeRoomAction(roomActionCode) {
-        fetchFromApi(ConstantCollection.API_BASE_URL + '/room-action/' + roomActionCode, (roomAction) => {
-            const newConfig = {...gameConfig};
-            newConfig.currentRoomAction = roomAction;
+    const changeRoomFromResponse = (response) => {
+        const newConfig = {...gameConfig};
+        newConfig.currentRoomAction = response[0];
 
-            setGameConfig(newConfig);
-        })
+        setGameConfig(newConfig);
+    };
+
+    function changeRoomAction(roomActionCode) {
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room-action/' + roomActionCode, changeRoomFromResponse)
     }
 
+    function goToBossRoom() {
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-end', changeRoomFromResponse);
+    }
+
+    function goToNewRoom() {
+        const gameConfigClone = {...gameConfig};
+        gameConfigClone.roomNumber++;
+        setGameConfig(gameConfigClone);
+
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-end', changeRoomFromResponse);
+    }
 
     return(
         <GameConfigContext.Provider value={{
             gameConfig,
             setGameConfig,
             roomPassed,
+            goToNewRoom,
+            goToBossRoom,
             changeRoomAction
+
         }}>
             {children}
         </GameConfigContext.Provider>

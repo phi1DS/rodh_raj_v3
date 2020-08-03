@@ -65821,14 +65821,15 @@ function RoomAction() {
     alt: ""
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_txt"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Si il n'y a pas d'obstacle particulier dans cette salle, vous vous arr\xEAtez tout de m\xEAme pour regarder autour de vous. Les murs sont couverts d'\xE9tag\xE8res pleines de flacons et pots, contenants toutes sortes de potions \xE9tranges, poisons perfides, onguents pour les bleus et sirops pour la toux.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, gameConfig.currentRoomAction.text)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_choices"
-  }, gameConfig.currentRoomAction.choices.map(function (choice) {
+  }, gameConfig.currentRoomAction.choices.map(function (choice, index) {
     var _choice$target;
 
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomActionChoice__WEBPACK_IMPORTED_MODULE_2__["default"], {
       choiceText: choice.text,
-      targetRoomActionCode: (_choice$target = choice.target) !== null && _choice$target !== void 0 ? _choice$target : false
+      targetRoomActionCode: (_choice$target = choice.target) !== null && _choice$target !== void 0 ? _choice$target : false,
+      key: index
     });
   })));
 }
@@ -65855,9 +65856,22 @@ function RoomActionChoice(_ref) {
       targetRoomActionCode = _ref.targetRoomActionCode;
 
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
-      changeRoomAction = _useContext.changeRoomAction;
+      gameConfig = _useContext.gameConfig,
+      changeRoomAction = _useContext.changeRoomAction,
+      goToBossRoom = _useContext.goToBossRoom,
+      goToNewRoom = _useContext.goToNewRoom;
 
   var goToRoomAction = function goToRoomAction() {
+    if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
+      goToBossRoom();
+      return;
+    }
+
+    if (targetRoomActionCode === false) {
+      goToNewRoom();
+      return;
+    }
+
     changeRoomAction(targetRoomActionCode);
   };
 
@@ -65871,9 +65885,7 @@ function RoomActionChoice(_ref) {
     alt: ""
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_choice_txt"
-  }, {
-    choiceText: choiceText
-  }));
+  }, choiceText));
 }
 
 /***/ }),
@@ -65891,12 +65903,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 function RoomFooter() {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
       gameConfig = _useContext.gameConfig;
 
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      lifeBars = _useState2[0],
+      setLifeBars = _useState2[1];
+
+  var changeLifeBars = function changeLifeBars() {
+    var lifeBarsCopy = [];
+
+    for (var i = 0; i < gameConfig.player.life; i++) {
+      lifeBarsCopy.push(i);
+    }
+
+    setLifeBars(lifeBarsCopy);
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    changeLifeBars();
+  }, [gameConfig.roomNumber]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65905,9 +65947,11 @@ function RoomFooter() {
     className: "character_title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vie :")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_attribute"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, gameConfig.player.life.map(function (lifePoint) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "|\xA0");
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, lifeBars.map(function (lifePoint) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      key: lifePoint
+    }, "|\xA0");
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_items character_child"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_title"
@@ -65946,7 +65990,7 @@ function GameWrapper() {
     className: "wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container_donjon"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_RoomHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_RoomHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_RoomFooter__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body_RoomAction__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
 }
 
 /***/ }),
@@ -65964,7 +66008,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
-/* harmony import */ var _RoomNumber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RoomNumber */ "./resources/js/Components/Game/Header/RoomNumber.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -65979,7 +66022,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function RoomHeader() {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
       gameConfig = _useContext.gameConfig;
@@ -65990,63 +66032,33 @@ function RoomHeader() {
       setRoomNumberArray = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    changeRoomNumber();
+  }, [gameConfig.roomNumber]);
+
+  var changeRoomNumber = function changeRoomNumber() {
     var roomNumberArrayCopy = [];
 
-    for (var i = 0; i < gameConfig.maxRoomNumber; i++) {
-      roomNumberArrayCopy.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomNumber__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        i: i,
-        key: i
-      })); // if (i === gameConfig.roomNumber) {
-      //     roomNumberArrayCopy.push(
-      //         <RoomNumber i={i} className="underLined" key={i}/>
-      //     )
-      // }
-      // else {
-      //     roomNumberArrayCopy.push(
-      //         <RoomNumber i={i} key={i}/>
-      //     )
-      // }
+    for (var i = 1; i <= gameConfig.maxRoomNumber; i++) {
+      roomNumberArrayCopy.push(i);
     }
 
-    console.log(roomNumberArrayCopy);
     setRoomNumberArray(roomNumberArrayCopy);
-  }, []);
-  console.log(roomNumberArray);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_top"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Salle des potions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, gameConfig.currentRoomAction.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_number"
-  }, roomNumberArray));
-}
-
-/***/ }),
-
-/***/ "./resources/js/Components/Game/Header/RoomNumber.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/Components/Game/Header/RoomNumber.js ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RoomNumber; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-function RoomNumber(_ref) {
-  var i = _ref.i,
-      props = _objectWithoutProperties(_ref, ["i"]);
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", props, {
-    i: i
-  });
+  }, roomNumberArray.map(function (number) {
+    return number === gameConfig.roomNumber ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "underLined",
+      key: number
+    }, number) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: number
+    }, number);
+  })));
 }
 
 /***/ }),
@@ -66097,16 +66109,22 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     },
     maxRoomNumber: 10,
     roomNumber: 1,
-    currentRoomAction: {}
+    currentRoomAction: {
+      code: "",
+      name: "",
+      text: "",
+      choices: []
+    }
   };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(_objectSpread({}, defaultGameConfig)),
       _useState2 = _slicedToArray(_useState, 2),
       gameConfig = _useState2[0],
-      setGameConfig = _useState2[1]; // useEffect(() => {
-  //     // TODO fetch local storage config ?
-  // }, []);
+      setGameConfig = _useState2[1];
 
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-start', changeRoomFromResponse); // TODO fetch local storage config ? | sinon prend la première
+  }, []);
 
   function roomPassed() {
     var newConfig = _objectSpread({}, gameConfig);
@@ -66120,13 +66138,27 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     setGameConfig(newConfig);
   }
 
-  function changeRoomAction(roomActionCode) {
-    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room-action/' + roomActionCode, function (roomAction) {
-      var newConfig = _objectSpread({}, gameConfig);
+  var changeRoomFromResponse = function changeRoomFromResponse(response) {
+    var newConfig = _objectSpread({}, gameConfig);
 
-      newConfig.currentRoomAction = roomAction;
-      setGameConfig(newConfig);
-    });
+    newConfig.currentRoomAction = response[0];
+    setGameConfig(newConfig);
+  };
+
+  function changeRoomAction(roomActionCode) {
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room-action/' + roomActionCode, changeRoomFromResponse);
+  }
+
+  function goToBossRoom() {
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-end', changeRoomFromResponse);
+  }
+
+  function goToNewRoom() {
+    var gameConfigClone = _objectSpread({}, gameConfig);
+
+    gameConfigClone.roomNumber++;
+    setGameConfig(gameConfigClone);
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-end', changeRoomFromResponse);
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(GameConfigContext.Provider, {
@@ -66134,6 +66166,8 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
       gameConfig: gameConfig,
       setGameConfig: setGameConfig,
       roomPassed: roomPassed,
+      goToNewRoom: goToNewRoom,
+      goToBossRoom: goToBossRoom,
       changeRoomAction: changeRoomAction
     }
   }, children);

@@ -12,8 +12,8 @@ export default function GameWrapper() {
 
                 <div className="container_donjon">
                     <RoomHeader/>
-                    {/*<RoomFooter/>*/}
-                    {/*<RoomAction/>*/}
+                    <RoomFooter/>
+                    <RoomAction/>
                 </div>
             </div>
         </GameConfigProvider>

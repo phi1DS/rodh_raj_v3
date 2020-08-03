@@ -18,20 +18,16 @@ export default function RoomAction() {
 
             <div className="room_txt">
                 <p>
-                    {/*{{gameConfig.currentRoomAction.text}}*/}
-                    Si il n'y a pas d'obstacle particulier dans cette salle, vous vous arrêtez tout de même
-                    pour regarder autour de vous. Les murs sont couverts d'étagères pleines de flacons et
-                    pots, contenants toutes sortes de potions étranges, poisons perfides, onguents pour les
-                    bleus et sirops pour la toux.
+                    {gameConfig.currentRoomAction.text}
                 </p>
             </div>
 
-
             <div className="room_choices">
                 {
-                    gameConfig.currentRoomAction.choices.map((choice) => {
-                        return (<RoomActionChoice choiceText={choice.text} targetRoomActionCode={choice.target ?? false}/>)
-                    })
+                    gameConfig.currentRoomAction.choices.map((choice, index) => (
+                            <RoomActionChoice choiceText={choice.text} targetRoomActionCode={choice.target ?? false} key={index}/>
+                        )
+                    )
                 }
             </div>
 

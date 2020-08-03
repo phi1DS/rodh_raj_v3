@@ -3,72 +3,72 @@
         "code": "entree_du_donjon_2",
         "name": "Entrée du donjon",
         "text": "Bravo ! Enfin quelqu'un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n'est pas vécue.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "isBackToMenu": "true",
                 "text": "Retour au Menu"
             }
-        }
+        ]
     },
     "roomAction1_1": {
         "code": "entree_du_donjon_1",
         "isStartRoomAction": "true",
         "name": "Entrée du donjon",
         "text": "Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.\nCertaines épreuves marquent un virage dans une existence. D'autres ne sont que ramassis de futilités posées sur le chemin de la vie tel un étron fumant attendant patiemment le pied du passant distrait. Un donjon est l'épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. De biens nombreuses raisons de s'aventurer dans un endroit ou le danger est à chaque tournant.\nOserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Entrer dans le Donjon."
             },
-            "choice2": {
+            {
                 "target": "entree_du_donjon_2",
                 "text": "Rentrer chez Maman."
             }
-        }
+        ]
     },
     "roomAction_boss_2": {
         "code": "salle_du_boss_2",
         "name": "Salle du Boss",
         "text": "Vous trébuchez maladroitement sur le premier pavé venu tout en lachant votre épée. Cette action inattendue destabilise le mage qui se met à rire de manière incontrôlée. C'est à ce moment que votre épée décide de retomber et se plante entre les yeux du boss. Victoire !",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Retour au menu.",
                 "isBackToMenu": "true"
             }
-        }
+        ]
     },
     "roomAction_boss_3": {
         "code": "salle_du_boss_3",
         "name": "Salle du Boss",
         "text": "D'un claquement de doigts, votre corps se transforme en merguez géante. Au moins votre mort à été rapide et sans douleur (ou presque).",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Retour au menu.",
                 "isBackToMenu": "true"
             }
-        }
+        ]
     },
     "roomAction_boss_4": {
         "code": "salle_du_boss_4",
         "name": "Salle du Boss",
         "text": "Le mage mauve se tortille de douleur face à votre offensive à faire grincer des dents. Petit à petit son corps se désintègre jusqu'à former un petit tas de poussière. Si gagne: Qui l'aurait cru ? Toujours est il qu'un coffre rempli de babioles magiques et d'argent vous attend sagement derrière le bureau de feu le maître des lieux. Félicitation aventurier ! La chance vous sourira peut être au prochain donjon ?",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Retour au menu.",
                 "isBackToMenu": "true"
             }
-        }
+        ]
     },
     "roomAction_boss_1": {
         "code": "salle_du_boss_1",
         "name": "Salle du Boss",
         "isStartRoomAction": "true",
         "text": "Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : le mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond. “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu'ils n'auront pas leur augmentation avant de savoir récurer correctement les latrines ! Serviteur ?” Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier. “Alors comme ça vous avez réussi à m'atteindre ? Bravo à vous. Maintenant trépassez rapidement s'il vous plait : j'ai du travail !”. L'air commence à crépiter d'énergie magique : c'est l'heure du combat de boss !\nSoyons honnêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Fuiez pauvre fou !",
                 "target": "entree_du_donjon_2"
             },
-            "choice2": {
+            {
                 "text": "Combattre !",
                 "chanceAction": {
                     "chance": 1,
@@ -76,63 +76,63 @@
                     "failureRoomActionCode": "salle_du_boss_3"
                 }
             },
-            "choice3": {
+            {
                 "text": "Jouer de votre instrument de musique.",
                 "target": "salle_du_boss_4",
                 "itemAction": {
                     "item": "Instrument de musique"
                 }
             }
-        }
+        ]
     },
     "roomAction2_2": {
         "code": "les_trois_couloirs_2",
         "name": "Les trois couloirs",
         "text": "Une herse tombe du plafond et vous barre la route. La voix caverneuse du propriétaire des lieux retentit : “BIEN ESSAYÉ, MAIS TU NE M'AURA PAS COMME ÇA PETIT MALIN !”.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Prendre le couloir de droite."
             },
-            "choice2": {
+            {
                 "text": "Prendre le couloir de gauche."
             }
-        }
+        ]
     },
     "roomAction2_1": {
         "code": "les_trois_couloirs_1",
         "isStartRoomAction": "true",
         "name": "Les trois couloirs",
         "text": "La seule activité de cette salle consiste apparemment à mettre à l'épreuve les capacités décisionnel de l'aventurier. Trois couloirs vous font face, chacun allant dans une direction différente.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Prendre le couloir de droite."
             },
-            "choice2": {
+            {
                 "text": "Prendre le couloir du milieu.",
                 "target": "les_trois_couloirs_2"
             },
-            "choice3": {
+            {
                 "text": "Prendre le couloir de gauche."
             }
-        }
+        ]
     },
     "roomAction3_4": {
         "code": "salle_au_mur_4",
         "name": "Salle au Mur",
         "text": "Succès ! Vous voilà en haut.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction3_3": {
         "code": "salle_au_mur_3",
         "name": "Salle au Mur",
         "text": "Vous manquez votre prise et retombez face contre terre.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Retenter de grimper à main nues.",
                 "chanceAction": {
                     "chance": 7,
@@ -140,15 +140,15 @@
                     "failureRoomActionCode": "salle_au_mur_4"
                 }
             }
-        }
+        ]
     },
     "roomAction3_2": {
         "code": "salle_au_mur_2",
         "name": "Salle au Mur",
         "looseLife": 1,
         "text": "Une fois à mi parcours, votre échelle craque sans crier gare. Votre chute spectaculaire vous laisse une intense douleur au postérieur.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Tenter de grimper à main nues.",
                 "chanceAction": {
                     "chance": 6,
@@ -156,19 +156,19 @@
                     "failureRoomActionCode": "salle_au_mur_4"
                 }
             }
-        }
+        ]
     },
     "roomAction3_1": {
         "code": "salle_au_mur_1",
         "isStartRoomAction": "true",
         "name": "Salle au Mur",
         "text": "Pour une fois vous voilà face à autre chose que des horreurs: un mur. Celui-ci faisant une dizaine de mètres de haut. Vous apercevez la porte de la salle suivante en son sommet.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Utiliser l'échelle cachée dans un coin de la pièce.",
                 "target": "salle_au_mur_2"
             },
-            "choice2": {
+            {
                 "text": "Tenter de grimper à main nues.",
                 "chanceAction": {
                     "chance": 6,
@@ -176,46 +176,46 @@
                     "failureRoomActionCode": "salle_au_mur_3"
                 }
             }
-        }
+        ]
     },
     "roomAction4_4": {
         "code": "grotte_humide_4",
         "name": "Grotte humide",
         "text": "D'un coup bien placé, vous faites fuir le monstre vers un endroit sombre.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction4_5": {
         "code": "grotte_humide_5",
         "name": "Grotte humide",
         "looseLife": 1,
         "text": "Le monstre vous administre un crochet de droit qui vous envoie valdinguer sur plusieurs mètres. Heureusement pour vous, l'élémentaire est plutôt lent et vos parvenez à fuir avec dignité",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction4_3": {
         "code": "grotte_humide_3",
         "name": "Grotte humide",
         "text": "Le repos vous rend un peu de vos forces.",
         "looseLife": -1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction4_2": {
         "code": "grotte_humide_2",
         "name": "Grotte humide",
         "text": "A peine avez vous le moment de vous poser que le sol se met à trembler. S'asseoir sur un élémentaire de terre est rarement une bonne idée.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre !",
                 "chanceAction": {
                     "chance": 5,
@@ -223,15 +223,15 @@
                     "failureRoomActionCode": "grotte_humide_5"
                 }
             }
-        }
+        ]
     },
     "roomAction4_1": {
         "code": "grotte_humide_1",
         "isStartRoomAction": "true",
         "name": "Grotte humide",
         "text": "Vous connaissez le nom de ces pics de pierres qui sortent du sol et du plafond. Se sont des stalagmites et des stalag[?] … Ah ben non en fait. Heureusement un gros rocher sur le côté pourrait vous aider à vous remettre de cet effort intellectuel immense.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Se reposer sur le rocher.",
                 "chanceAction": {
                     "chance": 2,
@@ -239,48 +239,48 @@
                     "failureRoomActionCode": "grotte_humide_2"
                 }
             },
-            "choice2": {
+            {
                 "text": "Pas de repos pour les braves ! Continuer sa route."
             }
-        }
+        ]
     },
     "roomAction6_8": {
         "code": "dortoir_des_serviteurs_8",
         "name": "Dortoir des serviteurs",
         "text": "Salle brute !",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction6_7": {
         "code": "dortoir_des_serviteurs_7",
         "name": "Dortoir des serviteurs",
         "looseLife": 1,
         "text": "Vous poursuivrez donc votre aventure avec une multitudes de petites morsures sur tous le corps et surtout la honte d'avoir perdu face à des lutins.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction6_6": {
         "code": "dortoir_des_serviteurs_6",
         "name": "Dortoir des serviteurs",
         "text": "Vous leurs réglez leurs comptes sans trop de problèmes. Après tout un lutin enragé reste un lutin.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction6_5": {
         "code": "dortoir_des_serviteurs_5",
         "name": "Dortoir des serviteurs",
         "text": "Hum … Vous avez mal dosé votre pouvoir et mettez les lutins sous état de rage berserk.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre !",
                 "chanceAction": {
                     "chance": 6,
@@ -288,57 +288,57 @@
                     "failureRoomActionCode": "dortoir_des_serviteurs_7"
                 }
             }
-        }
+        ]
     },
     "roomAction6_4": {
         "code": "dortoir_des_serviteurs_4",
         "name": "Dortoir des serviteurs",
         "text": "Intéressant… Une fois les lutins sous votre influence, ils vous proposent de creuser un passage directement vers le maître du donjon.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "target": "salle_du_boss_1",
                 "text": "Accepter."
             },
-            "choice2": {
+            {
                 "text": "Refuser poliment."
             }
-        }
+        ]
     },
     "roomAction6_3": {
         "code": "dortoir_des_serviteurs_3",
         "name": "Dortoir des serviteurs",
         "text": "les petites bêtes paniquent trop pour dire quoi que ce soit.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction6_2": {
         "code": "dortoir_des_serviteurs_2",
         "name": "Dortoir des serviteurs",
         "text": "Intéressant… En échange de votre clémence, les lutins proposent de vous creuser un passage directement vers le maître du donjon.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "target": "salle_du_boss_1",
                 "text": "Accepter."
             },
-            "choice2": {
+            {
                 "text": "Refuser poliment et continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction6_1": {
         "code": "dortoir_des_serviteurs_1",
         "name": "Dortoir des serviteurs",
         "isStartRoomAction": "true",
         "text": "En défonçant brutalement la porte vous mettez pied dans une salle senteur lavande. Le maître du Donjon à beau être un meurtrier, il lui tient à coeur de proposer des draps propres à ses serviteurs. Immédiatement après votre arrivée inattendue, les lutins présents dans la salle se sont tous figés en poussant des cris inquiets.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "target": "dortoir_des_serviteurs_8",
                 "text": "Les massacrer !"
             },
-            "choice2": {
+            {
                 "text": "Tenter de leur parler.",
                 "chanceAction": {
                     "chance": 3,
@@ -346,7 +346,7 @@
                     "failureRoomActionCode": "dortoir_des_serviteurs_3"
                 }
             },
-            "choice3": {
+            {
                 "text": "Utiliser votre magie pour contrôler leur esprit faible.",
                 "chanceAction": {
                     "chance": 3,
@@ -354,79 +354,79 @@
                     "failureRoomActionCode": "dortoir_des_serviteurs_5"
                 }
             }
-        }
+        ]
     },
     "roomAction7_7": {
         "code": "salle_anciennement_vide_7",
         "name": "Salle anciennement vide",
         "text": "Vous partez direction la salle suivante avec trois aventuriers au trousses et un coffre entre les mains. Heureusement, ceux-ci s'essoufflent vite. Il ne pouvaient pas lutter face à votre expérience dans le domaine de la fuite. Apèrs avoir ouvert le coffre, vous y récupérez des champignons bleus.",
         "addItem": "Champignons bleus",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction7_6": {
         "code": "salle_anciennement_vide_6",
         "name": "Salle anciennement vide",
         "looseLife": 1,
         "text": "Vous êtes pris la main dans le sac ! Et recevez donc une main en travers de la figure.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction7_5": {
         "code": "salle_anciennement_vide_5",
         "name": "Salle anciennement vide",
         "text": "Votre victoire fut rapide et sanglante. Vous vous précipitez sur le coffre pour y trouver une pile de champignons bleus.",
         "addItem": "Champignons bleus",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction7_4": {
         "code": "salle_anciennement_vide_4",
         "name": "Salle anciennement vide",
         "text": "Vous êtes battu à plate de couture.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction7_3": {
         "code": "salle_anciennement_vide_3",
         "name": "Salle anciennement vide",
         "text": "Vous discutez de pluie et de beau temps dans un donjon.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction7_2": {
         "code": "salle_anciennement_vide_2",
         "name": "Salle anciennement vide",
         "text": "En vous laissant aller à la conversation, vous apprenez que le maître du donjon à horreur de la mauvaise musique.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction7_1": {
         "code": "salle_anciennement_vide_1",
         "name": "Salle anciennement vide",
         "isStartRoomAction": "true",
         "text": "Vous voici face à un taudis construit de divers objets trouvés sur le sol des sombres couloirs du Donjon. Une fois à l'intérieur, vous trouvez un groupe de trois anciens d'aventuriers. Ils vous expliquent qu'ils ont préféré s'installer ici plutôt que de mourir dans une des salles suivante ou de rebrousser chemin. Lors de la conversation vous remarquez un coffre de taille raisonnable au fond du taudis.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Faire demi-tour puis les attaquer par surprise.",
                 "chanceAction": {
                     "chance": 5,
@@ -434,7 +434,7 @@
                     "failureRoomActionCode": "salle_anciennement_vide_4"
                 }
             },
-            "choice2": {
+            {
                 "text": "Discuter et accepter l'infusion aux champignon bleus.",
                 "chanceAction": {
                     "chance": 5,
@@ -442,7 +442,7 @@
                     "failureRoomActionCode": "salle_anciennement_vide_3"
                 }
             },
-            "choice3": {
+            {
                 "text": "Sympathiser puis voler le coffre quand l'occasion se présente.",
                 "chanceAction": {
                     "chance": 3,
@@ -450,104 +450,104 @@
                     "failureRoomActionCode": "salle_anciennement_vide_6"
                 }
             }
-        }
+        ]
     },
     "roomAction8_2": {
         "code": "salle_au_tresor_2",
         "name": "Salle au trésor",
         "text": "Il n'en fallu pas moins pour qu'un rideau de flammes écarlates vous fonce dessus.",
         "looseLife": 10,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Salle suivante"
             }
-        }
+        ]
     },
     "roomAction8_9": {
         "code": "salle_au_tresor_9",
         "name": "Salle au trésor",
         "looseLife": 10,
         "text": "Vous prenez cher.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Salle suivante"
             }
-        }
+        ]
     },
     "roomAction8_3": {
         "code": "salle_au_tresor_3",
         "name": "Salle au trésor",
         "text": "Vous tapez sur votre bouclier avec votre hache. Il n'en fallu pas moins pour qu'un rideau de flammes écarlates vous fonce dessus.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Mourrir...",
                 "target": "salle_au_tresor_9"
             }
-        }
+        ]
     },
     "roomAction8_4": {
         "code": "salle_au_tresor_4",
         "name": "Salle au trésor",
         "text": "Vous passez à la salle suivante sur la pointe de vos pieds. Si bien que l'ongle de votre gros orteil droit se décolle.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction8_6": {
         "code": "salle_au_tresor_6",
         "name": "Salle au trésor",
         "text": "En vous approchant discrètement vous arrivez à repartir avec une partie du trésor.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Salle suivante"
             }
-        }
+        ]
     },
     "roomAction8_7": {
         "code": "salle_au_tresor_7",
         "name": "Salle au trésor",
         "text": "*Klonk* et oups seront les derniers sons que vous entenderez de votre vivant.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Mourrir...",
                 "target": "salle_au_tresor_9"
             }
-        }
+        ]
     },
     "roomAction8_8": {
         "code": "salle_au_tresor_8",
         "name": "Salle au trésor",
         "text": "Le dragon est pris d'une frayeur incontrôlable. Il s'envole en faisant un trou dans le plafond sur plusieurs étages.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "S'emparer du trésor et poursuivre sa route."
             }
-        }
+        ]
     },
     "roomAction8_1": {
         "code": "salle_au_tresor_1",
         "name": "Salle au trésor",
         "isStartRoomAction": "true",
         "text": "Vous n'en croyez pas vos yeux : une montagne d'or et des pierres précieuses font briller les murs de la salle. Le seul hic l'espace restreint qu'offre vos poches et le dragon de trois charrettes de haut qui dort dessus.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Pousser votre plus beau cri de guerre et charger le dragon !",
                 "chanceAction": {
                     "chance": 2,
                     "target": "salle_au_tresor_2"
                 }
             },
-            "choice2": {
+            {
                 "text": "Réveiller le dragon puis engager une conversation.",
                 "target": "salle_au_tresor_3"
             },
-            "choice3": {
+            {
                 "text": "Passer sans le déranger.",
                 "target": "salle_au_tresor_4"
             },
-            "choice4": {
+            {
                 "text": "Chaparder discrètement une partie du trésor.",
                 "chanceAction": {
                     "chance": 4,
@@ -555,75 +555,75 @@
                     "failureRoomActionCode": "salle_au_tresor_7"
                 }
             },
-            "choice5": {
+            {
                 "text": "Brandir les documents tels les saint écrits.",
                 "target": "salle_au_tresor_8",
                 "itemAction": {
                     "item": "Pile de 3 kilo de documents administratifs"
                 }
             }
-        }
+        ]
     },
     "roomAction9_6": {
         "code": "salle_des_espoirs_perdus_6",
         "name": "Salle des espoirs perdus",
         "text": "Vous repartez en direction de la salle suivante avec la tête qui tourne et trois litres de sang en mois.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction9_5": {
         "code": "salle_des_espoirs_perdus_5",
         "name": "Salle des espoirs perdus",
         "text": "Sa rhétorique irréprochable vous force à lui donner votre sang.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction9_4": {
         "code": "salle_des_espoirs_perdus_4",
         "name": "Salle des espoirs perdus",
         "text": "Après avoir débattu pendant plus d'une demi-journée, vous sortez vainqueur en laissant derrière vous un homme désespéré et au bord du suicide.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction9_3": {
         "code": "salle_des_espoirs_perdus_3",
         "name": "Salle des espoirs perdus",
         "text": "L'homme vous maitrise et vous prend votre sang par la force.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction9_2": {
         "code": "salle_des_espoirs_perdus_2",
         "name": "Salle des espoirs perdus",
         "text": "Vous n'avez même pas le temps de placer un coup d'épée que l'étrange personnage s'enfui à toutes jambes en criant.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction9_1": {
         "code": "salle_des_espoirs_perdus_1",
         "name": "Salle des espoirs perdus",
         "isStartRoomAction": "true",
         "text": "Vous faites face à un homme ordinaire qui prétend lutter pour une cause juste. Après avoir échangé quelques mots avec lui, vous avez appris qu'il lutte contre la chute des bébés girafes lors de leurs naissance. Pour cela il propose de débarrasser les femelles girafes d'une partie de leurs jambes et n'exige de votre part qu'un petit don de sang pour faire avancer sa cause auprès d'un élu vampire.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Du démarchage en plein donjon ! Ça mérite bien une claque !",
                 "chanceAction": {
                     "chance": 7,
@@ -631,7 +631,7 @@
                     "failureRoomActionCode": "salle_des_espoirs_perdus_3"
                 }
             },
-            "choice2": {
+            {
                 "text": "Argumenter sur les inconvénients de sa solution.",
                 "chanceAction": {
                     "chance": 4,
@@ -639,54 +639,54 @@
                     "failureRoomActionCode": "salle_des_espoirs_perdus_5"
                 }
             },
-            "choice3": {
+            {
                 "text": "Accepter. Pourquoi pas après tout ?",
                 "target": "salle_des_espoirs_perdus_6"
             },
-            "choice4": {
+            {
                 "text": "L'ignorer et poursuivre votre route."
             }
-        }
+        ]
     },
     "roomAction10_5": {
         "code": "l_antre_de_l_ogresse_vegan_5",
         "name": "L'antre de l'ogresse vegan",
         "text": "L'ogresse vous attrape et vous fait manger de force des Choux farcis au tofu en papillote.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la *eurk* salle suivante"
             }
-        }
+        ]
     },
     "roomAction10_2": {
         "code": "l_antre_de_l_ogresse_vegan_2",
         "name": "L'antre de l'ogresse vegan",
         "looseLife": 1,
         "text": "L'ogresse vous partage ses plats tout en racontant des anecdotes cocasses sur ses cousines vivant dans des terres de feu. Il ne vous reste de cette rencontre qu'un système digestif dans la panade et un slip souillé.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la *eurk* salle suivante."
             }
-        }
+        ]
     },
     "roomAction10_6": {
         "code": "l_antre_de_l_ogresse_vegan_6",
         "name": "L'antre de l'ogresse vegan",
         "text": "Après quelques moulinets d'épée, l'ogresse se transforme tranches plutôt appétissantes.",
         "addItem": "Viande",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction10_3": {
         "code": "l_antre_de_l_ogresse_vegan_3",
         "name": "L'antre de l'ogresse vegan",
         "text": "L'ogresse se fâche et vous charge.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre !",
                 "chanceAction": {
                     "chance": 6,
@@ -694,70 +694,70 @@
                     "failureRoomActionCode": "l_antre_de_l_ogresse_vegan_6"
                 }
             }
-        }
+        ]
     },
     "roomAction10_4": {
         "code": "l_antre_de_l_ogresse_vegan_4",
         "name": "L'antre de l'ogresse vegan",
         "text": "L'ogresse est ravie de cette expérience et vous laisse repartir avec le reste des affaires d'anciens aventuriers.",
         "addItem": "Canard en plastique",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction10_1": {
         "code": "l_antre_de_l_ogresse_vegan_1",
         "name": "L'antre de l'ogresse vegan",
         "isStartRoomAction": "true",
         "text": "Vous voilà devant une situation délicate. La seule ogresse qui ait décidé de se lancer dans le véganisme tente de vous en vanter les mérites. Des mots comme ‘brocolis' ou ‘lait de soja' sont bien trop répétés pour qualifier son prononceur de sain d'esprit (même venant d'une ogresse).",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Goûter un assortiment.",
                 "target": "l_antre_de_l_ogresse_vegan_2"
             },
-            "choice2": {
+            {
                 "text": "Refuser poliment en disant que la viande à bon goût.",
                 "target": "l_antre_de_l_ogresse_vegan_3"
             },
-            "choice3": {
+            {
                 "text": "Lui proposer une infusion à partir de champignons bleus.",
                 "target": "l_antre_de_l_ogresse_vegan_4",
                 "itemAction": {
                     "item": "Champignons bleus"
                 }
             }
-        }
+        ]
     },
     "roomAction11_2": {
         "code": "les_bureaux_du_donjon_2",
         "name": "Les bureaux du donjon",
         "text": "Après un peu d'action vous repartez avec les documents convoités.",
         "addItem": "Pile de 3 kilo de documents administratifs",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction11_3": {
         "code": "les_bureaux_du_donjon_3",
         "name": "Les bureaux du donjon",
         "text": "Vous vous prennez un violent coup d'annuaire sur la tête.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction11_4": {
         "code": "les_bureaux_du_donjon_4",
         "name": "Les bureaux du donjon",
         "text": "Vous voilà au bureau suivant. Après une attente aussi plaisante qu'un bain d'acide, vous êtes reçu par le personnel qui vous demande de vous rendre à un bureau suivant, celui-ci étant plus à même de traiter votre dossier.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Prouver que la violence résout tout.",
                 "chanceAction": {
                     "chance": 6,
@@ -765,18 +765,18 @@
                     "failureRoomActionCode": "les_bureaux_du_donjon_3"
                 }
             },
-            "choice2": {
+            {
                 "text": "Prendre la paperasse du guichetier et aller au bureau suivant.",
                 "target": "les_bureaux_du_donjon_5"
             }
-        }
+        ]
     },
     "roomAction11_5": {
         "code": "les_bureaux_du_donjon_5",
         "name": "Les bureaux du donjon",
         "text": "Vous voilà au bureau suivant. Après une attente aussi plaisante qu'un lego sous le pied, vous êtes reçu par le personnel qui vous demande de vous rendre à un bureau suivant, celui-ci étant plus à même de traiter votre dossier.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Prouver que la violence résout tout.",
                 "chanceAction": {
                     "chance": 6,
@@ -784,19 +784,19 @@
                     "failureRoomActionCode": "les_bureaux_du_donjon_3"
                 }
             },
-            "choice2": {
+            {
                 "text": "Prendre la paperasse du guichetier et aller au bureau suivant.",
                 "target": "les_bureaux_du_donjon_4"
             }
-        }
+        ]
     },
     "roomAction11_1": {
         "code": "les_bureaux_du_donjon_1",
         "name": "Les bureaux du donjon",
         "isStartRoomAction": "true",
         "text": "Pour pouvoir accéder à la prochaine salle, il va falloir acquérir l'autorisation dans un labyrinthe administratif. C'est avec dégoût que vos souvenirs concernant votre inscription à la mutuelle des aventurier vous revient en mémoire.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Prouver que la violence résout tout.",
                 "chanceAction": {
                     "chance": 6,
@@ -804,70 +804,70 @@
                     "failureRoomActionCode": "les_bureaux_du_donjon_3"
                 }
             },
-            "choice2": {
+            {
                 "text": "Prendre la paperasse du guichetier et aller au bureau suivant.",
                 "target": "les_bureaux_du_donjon_4"
             }
-        }
+        ]
     },
     "roomAction12_7": {
         "code": "la_taverne_du_donjon_7",
         "name": "La taverne du donjon",
         "text": "Vous vous mettez à beugler comme un ivrogne et réveillez la majeure partie des monstres de salle. Heureusement pour vous, leurs gueules de bois empêchent leurs coups de vous atteindre. Vous atteignez la salle suivante sans encombres.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction12_6": {
         "code": "la_taverne_du_donjon_6",
         "name": "La taverne du donjon",
         "text": "C'est donc en titubant que vous vous dirigez vers la salle suivante jusqu'à ce que votre chemin rencontre celui d'un Ogre peu compréhensif. Sa baffe vous fait planer jusqu'à la salle suivante. Retenez la leçon : l'alcool c'est mal !",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction12_2": {
         "code": "la_taverne_du_donjon_2",
         "name": "La taverne du donjon",
         "text": "Vous atteignez la porte de la salle suivnate sans problèmes. Les créatures étant trop occupés à décuver.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction12_3": {
         "code": "la_taverne_du_donjon_3",
         "name": "La taverne du donjon",
         "text": "Vous marchez accidentellement sur la queue d'un homme bête. Celui-ci vous rend l'ascenseur à sa manière.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction12_4": {
         "code": "la_taverne_du_donjon_4",
         "name": "La taverne du donjon",
         "text": "Brutalement, tous les monstres se relève et reprennent leurs anciennes activités, à savoir: se taper dessus ou vider des tonneaux de bière dans un brouhaha assourdissant. Personne ne porte son attention sur vous. Vous en profitez donc pour atteindre la salle suivante.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction12_5": {
         "code": "la_taverne_du_donjon_5",
         "name": "La taverne du donjon",
         "text": "Vous vous approchez du comptoir et effectuez votre commande auprès d'un barman à la mine renfrognée. Quelques instants plus tards le breuvage convoité vous arrive entre le mains. Sa couleur ambrée et son odeur se veulent rassurante. Vous empoignez la chope et la videz d'une traite. Aussitôt, votre vue se trouble et vos sens s'amenuisent.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "*hips*",
                 "chanceAction": {
                     "chance": 5,
@@ -875,7 +875,7 @@
                     "failureRoomActionCode": "la_taverne_du_donjon_7"
                 }
             },
-            "choice2": {
+            {
                 "text": "*hips*",
                 "chanceAction": {
                     "chance": 5,
@@ -883,7 +883,7 @@
                     "failureRoomActionCode": "la_taverne_du_donjon_7"
                 }
             },
-            "choice3": {
+            {
                 "text": "*hips*",
                 "chanceAction": {
                     "chance": 5,
@@ -891,15 +891,15 @@
                     "failureRoomActionCode": "la_taverne_du_donjon_7"
                 }
             }
-        }
+        ]
     },
     "roomAction12_1": {
         "code": "la_taverne_du_donjon_1",
         "name": "La taverne du donjon",
         "isStartRoomAction": "true",
         "text": "Vous en aviez déjà entendu parler dans des légendes, mais jamais vous n'aurez imaginé y mettre les pieds. Vous voici dans la taverne du donjon. Après avoir mis un premier pas dans la pièce faiblement éclairé, vous êtes assailli par une forte odeur d'alcool et de vomi. Autour de vous se tient la majorité des monstres contenus dans votre bestiaire. Les festivités de la veille ayant mal tournés, ils sont soit ivre mort, soit assommés et traînent çà et là entre des tables en miettes.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Traverser la salle sans se faire remarquer.",
                 "chanceAction": {
                     "chance": 7,
@@ -907,54 +907,54 @@
                     "failureRoomActionCode": "la_taverne_du_donjon_3"
                 }
             },
-            "choice2": {
+            {
                 "text": "Crier à la énième tournée générale.",
                 "target": "la_taverne_du_donjon_4"
             },
-            "choice3": {
+            {
                 "text": "Commander une bière.",
                 "target": "la_taverne_du_donjon_5"
             }
-        }
+        ]
     },
     "roomAction13_8": {
         "code": "la_chambre_froide_8",
         "name": "La chambre froide",
         "looseLife": 1,
         "text": "Après avoir fait une série de petits pas, vous pensez apercevoir la sortie. C'est à ce moments précis que vos sens de chauve souris cessent de fonctionner. Vous vous prenez un objet dur en plein sur le nez. Vous poursuivez néanmoins et réussissez trouvez la porte vers la prochaine salle.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction13_6": {
         "code": "la_chambre_froide_6",
         "name": "La chambre froide",
         "text": "D'un seul regard de ses innombrables yeux, le monde se met à tanguer. Vous vous réveillez dans la salle suivante avec une bonne migraine et probablement une partie de votre âme en moins.",
         "looseLife": 2,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction13_7": {
         "code": "la_chambre_froide_7",
         "name": "La chambre froide",
         "text": "Vos esquives bien rythmés (ou votre chance, les dieux seuls savent) vous permettent d'éviter les tentacules crochus du monstre. Vous parvenez à atteindre la salle suivante en récupérant au passage le parchemin.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante"
             }
-        }
+        ]
     },
     "roomAction13_5": {
         "code": "la_chambre_froide_5",
         "name": "La chambre froide",
         "text": "Après un coup de pioche vigoureux, une fissure se forme et progresse jusqu'en haut du bloc de glace. Ce dernier se fend sous vos yeux ébahi, libérant ainsi la créature cauchemardesque.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre ...",
                 "chanceAction": {
                     "chance": 2,
@@ -962,24 +962,24 @@
                     "failureRoomActionCode": "la_chambre_froide_7"
                 }
             }
-        }
+        ]
     },
     "roomAction13_4": {
         "code": "la_chambre_froide_4",
         "name": "La chambre froide",
         "text": "Vous libérez sans problèmes le parchemin prisonnier de la glace et le mettez dans votre sac.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction13_2": {
         "code": "la_chambre_froide_2",
         "name": "La chambre froide",
         "text": "Et la lumière fut ! Révélant une horrible créature congelée de plusieurs mètres de haut dans un bloc de glace. En plus du monstre se trouve un parchemin comportant d'anciennes inscriptions magiques. Cependant, vous n'êtes pas en capacités d'établir sa rareté et sa puissance au travers de la glace. De toute manière, vous êtes aussi qualifié en la langue arcanique qu'une vache pour la philosophie.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Sortir votre pioche et commencer à creuser le bloc pour atteindre le parchemin.",
                 "chanceAction": {
                     "chance": 4,
@@ -987,172 +987,172 @@
                     "failureRoomActionCode": "la_chambre_froide_5"
                 }
             },
-            "choice2": {
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction13_1": {
         "code": "la_chambre_froide_1",
         "name": "La chambre froide",
         "isStartRoomAction": "true",
         "text": "*Brrr* Une fois entré dans la salle, vous vous mettez à grelotter et à expirer de fins nuages. Vous vous maudissez alors de ne pas avoir écouté votre maman quand il s'agissait d'ajouter une petite laine à votre attirail d'aventurier. L'absence d'éclairage vous empêche de voir quoi que ce soit et aucun son menaçant ne se fait entendre.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Allumer une torche et poursuivre sa route.",
                 "target": "la_chambre_froide_2"
             },
-            "choice2": {
+            {
                 "text": "Continuer sans lumière avec les bras tendus vers l'avant.",
                 "target": "la_chambre_froide_8"
             }
-        }
+        ]
     },
     "roomAction14_2": {
         "code": "la_salle_de_l_engime_2",
         "name": "La chambre froide",
         "text": "Des piques de mettent à sortir du sol et labourent votre chair tendre. ça ne devait pas être la bonne solution. Cependant, le mur se soulève vous laissant poursuivre votre aventure.",
         "looseLife": 1,
-        "choices": {
-            "choice2": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction14_1": {
         "code": "la_salle_de_l_engime_1",
         "name": "La chambre froide",
         "isStartRoomAction": "true",
         "text": "Vous vous tenez à présent face à un mur comprenant des gravures étranges. Suite à leur analyse et au micro pendant maladroitement du plafond tous les doutes s'efface quand à l'épreuve de cette salle: vous êtes face à un mur à énigmes.<br/><br/>Il est écrit: “0+0 = ?”.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Répondre \"La tête à toto\".",
                 "target": "la_salle_de_l_engime_2"
             },
-            "choice2": {
+            {
                 "text": "Répondre \"0\".",
                 "target": "la_salle_de_l_engime_2"
             },
-            "choice3": {
+            {
                 "text": "Répondre \"O\".",
                 "target": "la_salle_de_l_engime_2"
             }
-        }
+        ]
     },
     "roomAction15_4": {
         "code": "salle_des_potions_4",
         "name": "Salle des potions",
         "text": "Une potion dorée ? Donne-elle le pouvoir de transformer le plomb en or ? Chance aux jeux ? Remède contre la lèpre ? En tout cas, cette potion vous à l'air d'être bénéfique. Gloups. La potion a un goût de peinture pour radiateurs. Mais vous vous sentez mieux et continuez.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction15_5": {
         "code": "salle_des_potions_5",
         "name": "Salle des potions",
         "text": "Le paradis des aventuriers.",
         "looseLife": 10,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Rejoindre le paradis des aventuriers."
             }
-        }
+        ]
     },
     "roomAction15_3": {
         "code": "salle_des_potions_3",
         "name": "Salle des potions",
         "text": "La tête de mort est en général de mauvaise augure, mais vous vous dites que c'est sûrement de la psychologie inversée. Gloups. “y aurait-y pas de la pomme dedans ?” seront vos dernières paroles. Le poison est indolore mais a fait effet en quelques secondes.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Rejoindre le paradis des aventuriers.",
                 "target": "salle_des_potions_5"
             }
-        }
+        ]
     },
     "roomAction15_2": {
         "code": "salle_des_potions_2",
         "name": "Salle des potions",
         "text": "Cette salle est une vraie caverne au trésor, vous vous sentez obligé de tenter votre chance, peut être qu'une potion soignera vos hémorroïdes ?. Votre curiosité vous ronge, vous devez en essayer au moins une !",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Boire la potion tête de mort.",
                 "target": "salle_des_potions_3"
             },
-            "choice2": {
+            {
                 "text": "Boire la potion dorée.",
                 "target": "salle_des_potions_4"
             }
-        }
+        ]
     },
     "roomAction15_1": {
         "code": "salle_des_potions_1",
         "name": "Salle des potions",
         "isStartRoomAction": "true",
         "text": "Si il n'y a pas d'obstacle particulier dans cette salle, vous vous arrêtez tout de même pour regarder autour de vous.  Les murs sont couverts d'étagères pleines de flacons et pots, contenants toutes sortes de potions étranges, poisons perfides, onguents pour les bleus et sirops pour la toux.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Se demander quelles sont ces potions en les examinant.",
                 "target": "salle_des_potions_2"
             },
-            "choice2": {
+            {
                 "text": "Boire la potion tête de mort.",
                 "target": "salle_des_potions_3"
             },
-            "choice3": {
+            {
                 "text": "Boire la potion dorée.",
                 "target": "salle_des_potions_4"
             }
-        }
+        ]
     },
     "roomAction16_2": {
         "code": "le_poste_de_garde_2",
         "name": "Le poste de garde",
         "text": "Les orcs vous encerclent et profite de l'avantage numérique pour vous mettre une dérouillée.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_3": {
         "code": "le_poste_de_garde_3",
         "name": "Le poste de garde",
         "text": "Votre charge déespérée pred l'ennemi au dépourvu. Votre stratégie imparable vous permet de les anéantir un à un sans la moindre égratinure.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_4": {
         "code": "le_poste_de_garde_4",
         "name": "Le poste de garde",
         "text": "Malgré votre mauvaise posture, vos sens d'aventurier reprennent le dessus et vous permet de venir à bout des gardes au prix de quelques légères coupures.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_5": {
         "code": "le_poste_de_garde_5",
         "name": "Le poste de garde",
         "text": "Vous engagez la discussion. Les gardes, d'abord surpris, vous laissent passer, au nom de leur protestation contre les récentes coupes de leur solde.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_6": {
         "code": "le_poste_de_garde_6",
         "name": "Le poste de garde",
         "text": "Vous engagez la conversation. Cependant les orcs vous chargent leurs gueule baveuse grande ouverte.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre.",
                 "chanceAction": {
                     "chance": 4,
@@ -1160,24 +1160,24 @@
                     "failureRoomActionCode": "le_poste_de_garde_2"
                 }
             }
-        }
+        ]
     },
     "roomAction16_7": {
         "code": "le_poste_de_garde_7",
         "name": "Le poste de garde",
         "text": "Vous exhibez vos muscles tout en essayant de paraitre dangereux. En vous voyant, les gardes haussent les épaules et reprennent leur partie sur fond d'accusation de triche. Vous auriez du vous en rappeller : vous n'avez pas de muscles.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_8": {
         "code": "le_poste_de_garde_8",
         "name": "Le poste de garde",
         "text": "Vous exhibez vos muscles tout en essayant de paraitre dangereux. En vous voyant, les gardes s'emparent de leurs armes et se jettent sur vous.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre.",
                 "chanceAction": {
                     "chance": 4,
@@ -1185,25 +1185,25 @@
                     "failureRoomActionCode": "le_poste_de_garde_2"
                 }
             }
-        }
+        ]
     },
     "roomAction16_9": {
         "code": "le_poste_de_garde_9",
         "name": "Le poste de garde",
         "text": "Vous enlevez vos bottes et avancez sur la pointe des pieds. Vous réussissez à passer sans vous faire voir. Les gardes ont rapidement repris leur partie, non sans se disputer sur fond d'accusation de triche.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_10": {
         "code": "le_poste_de_garde_10",
         "name": "Le poste de garde",
         "text": "Vous enlevez vos bottes et avancez sur la pointe des pieds. *Pouêêt* fait un étrange objet sous votre pied. En vous penchant, vous ramassez ce qui ressemble à un canard en plastique jaune. Vous n'avez pas le temps de vous interroger sur comment cet objet aurait pu atterrir ici. Ceci car vous êtes pieds nu face à une poignée d'orcs.",
         "addItem": "Canard en plastique",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre.",
                 "chanceAction": {
                     "chance": 4,
@@ -1211,37 +1211,37 @@
                     "failureRoomActionCode": "le_poste_de_garde_2"
                 }
             }
-        }
+        ]
     },
     "roomAction16_11": {
         "code": "le_poste_de_garde_11",
         "name": "Le poste de garde",
         "looseLife": 1,
         "text": "Quelle idée géniale : une personne qui passe est un moindre problème quand la moitié de la salle est en feu. La prochaine fois les gardes feront attention à nettoyer la graisse après les barbecues. Par contre, la  force des flammes vous a autant surpris que les gardes, vous vous en tirez avec un bras qui sent le bacon trop grillé.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_12": {
         "code": "le_poste_de_garde_12",
         "name": "Le poste de garde",
         "looseLife": 1,
         "text": "Vous abordez les gardes en leurs montrant votre jeu de cartes collector. Les règles improvisée semblent être appréciées. Vous vous faites quelques parties en buvant de la bière. Vous laissez cependant le jeu de cartes à vos nouveaux amis.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction16_1": {
         "code": "le_poste_de_garde_1",
         "name": "Le poste de garde",
         "isStartRoomAction": "true",
         "text": "Vous entrez dans la salle, et tombez nez à nez sur des gardes orcs en train de jouer aux cartes. Ils vous entendent, mais l'obscurité vous cache toujours. Leurs mains se dirigent vers leurs armes, et le temps s'arrête, que faire ?",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "CHAAAAAAAAAAARGER !",
                 "chanceAction": {
                     "chance": 6,
@@ -1249,7 +1249,7 @@
                     "failureRoomActionCode": "le_poste_de_garde_3"
                 }
             },
-            "choice2": {
+            {
                 "text": "Taper la discut'.",
                 "chanceAction": {
                     "chance": 3,
@@ -1257,7 +1257,7 @@
                     "failureRoomActionCode": "le_poste_de_garde_6"
                 }
             },
-            "choice3": {
+            {
                 "text": "Bander vos muscles pour les dissuader d'agir.",
                 "chanceAction": {
                     "chance": 3,
@@ -1265,7 +1265,7 @@
                     "failureRoomActionCode": "le_poste_de_garde_8"
                 }
             },
-            "choice4": {
+            {
                 "text": "Tenter de passer discrètement.",
                 "chanceAction": {
                     "chance": 5,
@@ -1273,88 +1273,88 @@
                     "failureRoomActionCode": "le_poste_de_garde_10"
                 }
             },
-            "choice5": {
+            {
                 "text": "Mettre le feu à la salle.",
                 "target": "le_poste_de_garde_11"
             },
-            "choice6": {
+            {
                 "text": "Sortir son jeu de cartes collector.",
                 "target": "le_poste_de_garde_12",
                 "itemAction": {
                     "item": "Jeu de Cartes collector"
                 }
             }
-        }
+        ]
     },
     "roomAction17_2": {
         "code": "vivarium_aux_illisible_géantes_2",
         "name": "Vivarium aux *illisible* géantes",
         "text": "Votre attaque improvisée a touché son but. En vous approchant, vous trouvez trois cadavres d'araignées d'environs deux mètres de diamètre, la chitine fendue par vos flèches. Avec un frisson, vous enjambez les corps et passez à la suite.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction17_3": {
         "code": "vivarium_aux_illisible_géantes_3",
         "name": "Vivarium aux *illisible* géantes",
         "text": "Le bruit dégagé par votre tentative désespérée attire les monstres sur vous.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction17_4": {
         "code": "vivarium_aux_illisible_géantes_4",
         "name": "Vivarium aux *illisible* géantes",
         "text": "Avec un morceau de tissu et des grands gestes, vous arrivez à dompter les bêtes, qui se réfugient dans un coin sombre et vous laissent passer.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction17_5": {
         "code": "vivarium_aux_illisible_géantes_5",
         "name": "Vivarium aux *illisible* géantes",
         "text": "Vous ignorez les bêtes, et passez tout droit vers la sortie en récitant votre mantra. “Je fais un avec le script et le script est un avec moi.” Les bêtes s'écartent de votre passage.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction17_6": {
         "code": "vivarium_aux_illisible_géantes_6",
         "name": "Vivarium aux *illisible* géantes",
         "text": "Vous commencez à réciter votre mantra, mais vous ne vous souvenez plus de la fin. C'est ballot.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction17_7": {
         "code": "vivarium_aux_illisible_géantes_7",
         "name": "Vivarium aux *illisible* géantes",
         "text": "Vous courrez dans tous les sens en hurant. Autour de vous les sifflements des bêtes se font de plus en plus proches. Vous appercevez enfin la lumière au bout du tunnel et vous y précipitez à toute vitesse. Vous remarquez que les bêtes ne vous suivent pas. Sûrement ont elle peur de la lueur des torches.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction17_1": {
         "code": "vivarium_aux_illisible_géantes_1",
         "name": "Vivarium aux *illisible* géantes",
         "isStartRoomAction": "true",
         "text": "Cette salle n'a pas de fenêtre, pas de torches, aucune lumière. Cependant, vous pouvez voir plusieurs paires d'yeux vous observer. Beaucoup trop de paires pour des animaux bienveillants. Beaucoup trop grands pour des animaux inoffensifs. Une goutte de sueur coule sur votre menton.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Tirer des flèches aléatoirement.",
                 "chanceAction": {
                     "chance": 4,
@@ -1362,7 +1362,7 @@
                     "failureRoomActionCode": "vivarium_aux_illisible_géantes_3"
                 }
             },
-            "choice2": {
+            {
                 "text": "Tenter d'amadouer les bêtes.",
                 "chanceAction": {
                     "chance": 2,
@@ -1370,7 +1370,7 @@
                     "failureRoomActionCode": "vivarium_aux_illisible_géantes_3"
                 }
             },
-            "choice3": {
+            {
                 "text": "Avancer en ligne droite en récitant une mantra.",
                 "chanceAction": {
                     "chance": 3,
@@ -1378,7 +1378,7 @@
                     "failureRoomActionCode": "vivarium_aux_illisible_géantes_6"
                 }
             },
-            "choice4": {
+            {
                 "text": "Céder à la panique.",
                 "chanceAction": {
                     "chance": 4,
@@ -1386,66 +1386,66 @@
                     "failureRoomActionCode": "vivarium_aux_illisible_géantes_3"
                 }
             }
-        }
+        ]
     },
     "roomAction18_9": {
         "code": "le_pigeonnier_9",
         "name": "Le pigeonnier",
         "text": "Vous montrez à ces volatiles qui est l'alpha, essentiellement en criant et en donnant des coups de pieds dans des tas de paille. Elles s'inclinent et vous laisse continuer.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction18_3": {
         "code": "le_pigeonnier_3",
         "name": "Le pigeonnier",
         "text": "Du sang et des plumes. C'est tout ce qu'il reste des harpies après votre passage.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction18_4": {
         "code": "le_pigeonnier_4",
         "name": "Le pigeonnier",
         "text": "Vous vous dirigez en courant vers la salle suivante en vous faisant picorer la tête par les volatils.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction18_5": {
         "code": "le_pigeonnier_5",
         "name": "Le pigeonnier",
         "text": "Vous vous cachez sous un tas de paille. Et ça fonctionne ! Les harpies passent à autre chose et repartent.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction18_6": {
         "code": "le_pigeonnier_6",
         "name": "Le pigeonnier",
         "text": "Vous vous jettez dans le tas de paille pour découvrir douloureusement l'existance d'un rocher en dessous. Les harpies sembent avoir pitié de vous et repartent dans une tempête de plumes.",
         "looseLife": 1,
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Continuer vers la salle suivante."
             }
-        }
+        ]
     },
     "roomAction18_2": {
         "code": "le_pigeonnier_2",
         "name": "Le pigeonnier",
         "text": "Vous décidez de hurler des insultes. Bonne ou mauvaise idée, des harpies arrivent, plutôt énervée de voir un intru dans leur nid.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre !",
                 "chanceAction": {
                     "chance": 6,
@@ -1453,7 +1453,7 @@
                     "failureRoomActionCode": "le_pigeonnier_4"
                 }
             },
-            "choice2": {
+            {
                 "text": "Se cacher dans le tas de paille proche.",
                 "chanceAction": {
                     "chance": 4,
@@ -1461,7 +1461,7 @@
                     "failureRoomActionCode": "le_pigeonnier_6"
                 }
             },
-            "choice3": {
+            {
                 "text": "Tenter de dompter les créatures.",
                 "chanceAction": {
                     "chance": 3,
@@ -1469,15 +1469,15 @@
                     "failureRoomActionCode": "le_pigeonnier_4"
                 }
             }
-        }
+        ]
     },
     "roomAction18_7": {
         "code": "le_pigeonnier_7",
         "name": "Le pigeonnier",
         "text": "Vous fouillez les environs et trouvez un jeu de cartes édition collector sous un tas de paille. En revanche les habitantes originaux des lieux retournent dans le pigeonnier, et vous vous retrouvez face à une dizaine de harpies énervées.",
         "addItem": "Jeu de cartes collector",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre !",
                 "chanceAction": {
                     "chance": 6,
@@ -1485,7 +1485,7 @@
                     "failureRoomActionCode": "le_pigeonnier_4"
                 }
             },
-            "choice2": {
+            {
                 "text": "Se cacher dans le tas de paille proche.",
                 "chanceAction": {
                     "chance": 4,
@@ -1493,7 +1493,7 @@
                     "failureRoomActionCode": "le_pigeonnier_6"
                 }
             },
-            "choice3": {
+            {
                 "text": "Tenter de dompter les créatures.",
                 "chanceAction": {
                     "chance": 3,
@@ -1501,14 +1501,14 @@
                     "failureRoomActionCode": "le_pigeonnier_4"
                 }
             }
-        }
+        ]
     },
     "roomAction18_8": {
         "code": "le_pigeonnier_8",
         "name": "Le pigeonnier",
         "text": "A peine avez vous le temps d'avancer d'un pas q'un nuage de harpies font sur vous.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Combattre !",
                 "chanceAction": {
                     "chance": 6,
@@ -1516,7 +1516,7 @@
                     "failureRoomActionCode": "le_pigeonnier_4"
                 }
             },
-            "choice2": {
+            {
                 "text": "Se cacher dans le tas de paille proche.",
                 "chanceAction": {
                     "chance": 4,
@@ -1524,7 +1524,7 @@
                     "failureRoomActionCode": "le_pigeonnier_6"
                 }
             },
-            "choice3": {
+            {
                 "text": "Tenter de dompter les créatures.",
                 "chanceAction": {
                     "chance": 3,
@@ -1532,19 +1532,19 @@
                     "failureRoomActionCode": "le_pigeonnier_4"
                 }
             }
-        }
+        ]
     },
     "roomAction18_1": {
         "code": "le_pigeonnier_1",
         "name": "Le pigeonnier",
         "isStartRoomAction": "true",
         "text": "Vous arrivez dans un pigeonnier vide. Des graines trainent encore par terre. Les emplacements pour les volatiles vous semblent en revanche vraiment grands pour des pigeons.",
-        "choices": {
-            "choice1": {
+        "choices": [
+            {
                 "text": "Faire du bruit.",
                 "target": "le_pigeonnier_2"
             },
-            "choice2": {
+            {
                 "text": "Fouiller les environs.",
                 "chanceAction": {
                     "chance": 4,
@@ -1552,6 +1552,6 @@
                     "failureRoomActionCode": "le_pigeonnier_8"
                 }
             }
-        }
+        ]
     }
 }
