@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return 'hello';
+    return view('game');
 })->name('homepage');
+
+Route::get('/laravel', function () {
+    return view('welcome');
+})->name('laravel');
 
 Route::get('addItem')->name('add_item')->uses('ItemController@add');
 Route::get('page')->name('page_item')->uses('ItemController@page');

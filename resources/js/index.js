@@ -1,18 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import DashboardEdit from "./dashboard-config-edit-components/DashboardEdit";
+import GameWrapper from "./Components/Game/GameWrapper";
 
 if (document.getElementById("game-display")) {
     ReactDOM.render(
-        <DashboardEdit />,
-        document.getElementById("dashboard-edit-form")
-    );
-}
-
-if (document.getElementById("dashboard-display")) {
-    ReactDOM.render(
-        <DashboardDisplay />,
-        document.getElementById("dashboard-display")
+        <GameWrapper />,
+        document.getElementById("game-display")
     );
 }
 

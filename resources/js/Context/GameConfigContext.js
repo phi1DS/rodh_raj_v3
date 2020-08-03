@@ -1,5 +1,5 @@
 import React, {useState, createContext} from 'react';
-import ConstantCollection from "../constants";
+import {ConstantCollection} from "../constants";
 import {fetchFromApi} from "../Services/ApiFetcher";
 
 export const GameConfigContext = createContext(null);
