@@ -5,6 +5,10 @@ export default function RoomActionChoice({choiceText, targetRoomActionCode}) {
     const {gameConfig, changeRoomAction, goToBossRoom, goToNewRoom} = useContext(GameConfigContext);
 
     const goToRoomAction = () => {
+
+        console.log(gameConfig.roomNumber);
+        console.log(gameConfig.maxRoomNumber);
+
         if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
             goToBossRoom();
             return;

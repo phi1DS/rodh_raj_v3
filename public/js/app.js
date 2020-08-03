@@ -65862,6 +65862,9 @@ function RoomActionChoice(_ref) {
       goToNewRoom = _useContext.goToNewRoom;
 
   var goToRoomAction = function goToRoomAction() {
+    console.log(gameConfig.roomNumber);
+    console.log(gameConfig.maxRoomNumber);
+
     if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
       goToBossRoom();
       return;
@@ -66141,6 +66144,8 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
   var changeRoomFromResponse = function changeRoomFromResponse(response) {
     var newConfig = _objectSpread({}, gameConfig);
 
+    console.log('api room response');
+    console.log(response[0]);
     newConfig.currentRoomAction = response[0];
     setGameConfig(newConfig);
   };
@@ -66158,7 +66163,7 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
 
     gameConfigClone.roomNumber++;
     setGameConfig(gameConfigClone);
-    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-end', changeRoomFromResponse);
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', changeRoomFromResponse);
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(GameConfigContext.Provider, {

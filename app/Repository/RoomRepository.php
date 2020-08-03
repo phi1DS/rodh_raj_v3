@@ -21,7 +21,7 @@ class RoomRepository
         RoomService::filerStartRoomActions($roomsData);
         RoomService::filerNonStaticRooms($roomsData, [self::START_ROOM_ID, self::END_ROOM_ID]);
 
-        return $roomsData[array_rand($roomsData, 1)];
+        return [$roomsData[array_rand($roomsData, 1)]];
     }
 
     public static function getRoomActionByCode(string $code): array

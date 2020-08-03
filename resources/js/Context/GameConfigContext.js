@@ -42,6 +42,10 @@ export const GameConfigProvider = ({children}) => {
 
     const changeRoomFromResponse = (response) => {
         const newConfig = {...gameConfig};
+
+        console.log('api room response');
+        console.log(response[0]);
+
         newConfig.currentRoomAction = response[0];
 
         setGameConfig(newConfig);
@@ -60,7 +64,7 @@ export const GameConfigProvider = ({children}) => {
         gameConfigClone.roomNumber++;
         setGameConfig(gameConfigClone);
 
-        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-end', changeRoomFromResponse);
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', changeRoomFromResponse);
     }
 
     return(
