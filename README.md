@@ -8,6 +8,8 @@ php artisan serve
 
 ## Setup :
 
+create file database/database.sqlite
+
 ```sh
 composer install
 ```
@@ -25,14 +27,13 @@ php artisan migrate
 ```
 
 ```sh
-php artisan key:generate
-```
-
-```sh
 cp .env.example .env
 ```
 
-create database/database.sqlite
+```sh
+php artisan key:generate
+```
+
 
 ## WIP :
 
