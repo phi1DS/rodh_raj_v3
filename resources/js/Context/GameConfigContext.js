@@ -35,6 +35,10 @@ export const GameConfigProvider = ({children}) => {
         if (gameConfig.currentRoomAction.hasOwnProperty('looseLife')) {
             looseLife(gameConfig.currentRoomAction.looseLife)
         }
+
+        if (gameConfig.currentRoomAction.hasOwnProperty('addItem')) {
+            addItem(gameConfig.currentRoomAction.addItem)
+        }
     }, [gameConfig.currentRoomAction]);
 
     function resetGameConfig() {
@@ -104,6 +108,13 @@ export const GameConfigProvider = ({children}) => {
         if (newConfig.player.life <= 0) {
             window.location.href =  location.protocol + "//" + location.host + "/dead";
         }
+
+        setGameConfig(newConfig);
+    }
+
+    function addItem(item) {
+        const newConfig = {...gameConfig};
+        newConfig.player.objects.push(item);
 
         setGameConfig(newConfig);
     }

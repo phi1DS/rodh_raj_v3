@@ -10,6 +10,8 @@ class ApiV1RoomController extends Controller
     public function getRandomRoom()
     {
         return RoomRepository::getRandomStartRoomAction();
+//        return RoomRepository::getRoomActionByCode('les_bureaux_du_donjon_1');
+//        return RoomRepository::getRoomActionByCode('salle_au_tresor_1');
     }
 
     public function getStartRoom()

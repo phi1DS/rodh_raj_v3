@@ -13,8 +13,8 @@ export default function RoomFooter() {
                 <div className="character_title"><p>Objets :</p></div>
                 <ul>
                     {
-                        gameConfig.player.objects.map((object) => (
-                            <div>{{object}}</div>
+                        gameConfig.player.objects.map((object, index) => (
+                            <div key={index}>{object}</div>
                         ))
                     }
                 </ul>

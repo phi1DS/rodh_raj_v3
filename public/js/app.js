@@ -65796,6 +65796,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
 /* harmony import */ var _RoomActionChoice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RoomActionChoice */ "./resources/js/Components/Game/Body/RoomActionChoice.js");
+/* harmony import */ var _RoomActionSpecialChoice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RoomActionSpecialChoice */ "./resources/js/Components/Game/Body/RoomActionSpecialChoice.js");
+/* harmony import */ var _RoomActionLockedChoice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RoomActionLockedChoice */ "./resources/js/Components/Game/Body/RoomActionLockedChoice.js");
+/* harmony import */ var _RoomActionChanceChoice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./RoomActionChanceChoice */ "./resources/js/Components/Game/Body/RoomActionChanceChoice.js");
+
+
+
 
 
 
@@ -65824,23 +65830,83 @@ function RoomAction() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, gameConfig.currentRoomAction.text)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_choices"
   }, gameConfig.currentRoomAction.choices.map(function (choice, index) {
-    var _choice$target;
+    if (choice.hasOwnProperty('itemAction')) {
+      var _choice$target;
 
-    var isBackToMenu = choice.hasOwnProperty('isBackToMenu');
-    var chanceActions = null;
+      return gameConfig.player.objects.includes(choice.itemAction.item) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomActionSpecialChoice__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        choiceText: choice.text,
+        targetRoomActionCode: (_choice$target = choice.target) !== null && _choice$target !== void 0 ? _choice$target : false,
+        key: index
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomActionLockedChoice__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        choiceText: choice.text,
+        key: index
+      });
+    } else if (choice.hasOwnProperty('chanceAction')) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomActionChanceChoice__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        choiceText: choice.text,
+        chanceActions: choice.chanceAction,
+        key: index
+      });
+    } else {
+      var _choice$target2;
 
-    if (choice.hasOwnProperty('chanceAction')) {
-      chanceActions = choice.chanceAction;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomActionChoice__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        choiceText: choice.text,
+        targetRoomActionCode: (_choice$target2 = choice.target) !== null && _choice$target2 !== void 0 ? _choice$target2 : false,
+        isBackToMenu: choice.hasOwnProperty('isBackToMenu'),
+        key: index
+      });
     }
-
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomActionChoice__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      choiceText: choice.text,
-      targetRoomActionCode: (_choice$target = choice.target) !== null && _choice$target !== void 0 ? _choice$target : false,
-      isBackToMenu: isBackToMenu,
-      chanceActions: chanceActions,
-      key: index
-    });
   })));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Components/Game/Body/RoomActionChanceChoice.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Components/Game/Body/RoomActionChanceChoice.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RoomActionChanceChoice; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
+
+
+function RoomActionChanceChoice(_ref) {
+  var choiceText = _ref.choiceText,
+      chanceActions = _ref.chanceActions;
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
+      changeRoomAction = _useContext.changeRoomAction;
+
+  var goToRoomAction = function goToRoomAction() {
+    var attempt = Math.floor(Math.random() * Math.floor(10));
+
+    if (attempt <= chanceActions.chance) {
+      console.log('-- Chance action success');
+      changeRoomAction(chanceActions.successRoomActionCode);
+    } else {
+      console.log('-- Chance action failure');
+      changeRoomAction(chanceActions.failureRoomActionCode);
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "room_choice bckg-grey",
+    onClick: goToRoomAction
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "fl"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/fleche.png",
+    alt: ""
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "room_choice_txt"
+  }, choiceText));
 }
 
 /***/ }),
@@ -65863,8 +65929,7 @@ __webpack_require__.r(__webpack_exports__);
 function RoomActionChoice(_ref) {
   var choiceText = _ref.choiceText,
       targetRoomActionCode = _ref.targetRoomActionCode,
-      isBackToMenu = _ref.isBackToMenu,
-      chanceActions = _ref.chanceActions;
+      isBackToMenu = _ref.isBackToMenu;
 
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
       gameConfig = _useContext.gameConfig,
@@ -65877,16 +65942,6 @@ function RoomActionChoice(_ref) {
     if (isBackToMenu) {
       console.log('-- Back to menu');
       resetGameConfig();
-    } else if (chanceActions !== null) {
-      var attempt = Math.floor(Math.random() * Math.floor(10));
-
-      if (attempt <= chanceActions.chance) {
-        console.log('-- Chance action success');
-        changeRoomAction(chanceActions.successRoomActionCode);
-      } else {
-        console.log('-- Chance action failure');
-        changeRoomAction(chanceActions.failureRoomActionCode);
-      }
     } else if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
       console.log('-- Go to boss room');
       goToBossRoom();
@@ -65901,6 +65956,80 @@ function RoomActionChoice(_ref) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_choice bckg-grey",
+    onClick: goToRoomAction
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "fl"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/fleche.png",
+    alt: ""
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "room_choice_txt"
+  }, choiceText));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Components/Game/Body/RoomActionLockedChoice.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Components/Game/Body/RoomActionLockedChoice.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RoomActionLockedChoice; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
+
+
+function RoomActionLockedChoice(_ref) {
+  var choiceText = _ref.choiceText;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "room_choice bckg-red",
+    title: "Vous n'avez pas l'objet nécéssaire"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "fl"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/fleche.png",
+    alt: ""
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "room_choice_txt"
+  }, choiceText));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Components/Game/Body/RoomActionSpecialChoice.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/Components/Game/Body/RoomActionSpecialChoice.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RoomActionSprecialChoice; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
+
+
+function RoomActionSprecialChoice(_ref) {
+  var choiceText = _ref.choiceText,
+      targetRoomActionCode = _ref.targetRoomActionCode;
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
+      changeRoomAction = _useContext.changeRoomAction;
+
+  var goToRoomAction = function goToRoomAction() {
+    console.log('-- Go to roomAction');
+    changeRoomAction(targetRoomActionCode);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "room_choice bckg-green",
     onClick: goToRoomAction
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "fl"
@@ -65943,10 +66072,10 @@ function RoomFooter() {
     className: "character_items character_child"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Objets :")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, gameConfig.player.objects.map(function (object) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, {
-      object: object
-    });
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Objets :")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, gameConfig.player.objects.map(function (object, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index
+    }, object);
   }))));
 }
 
@@ -66118,6 +66247,10 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     if (gameConfig.currentRoomAction.hasOwnProperty('looseLife')) {
       looseLife(gameConfig.currentRoomAction.looseLife);
     }
+
+    if (gameConfig.currentRoomAction.hasOwnProperty('addItem')) {
+      addItem(gameConfig.currentRoomAction.addItem);
+    }
   }, [gameConfig.currentRoomAction]);
 
   function resetGameConfig() {
@@ -66186,6 +66319,13 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
       window.location.href = location.protocol + "//" + location.host + "/dead";
     }
 
+    setGameConfig(newConfig);
+  }
+
+  function addItem(item) {
+    var newConfig = _objectSpread({}, gameConfig);
+
+    newConfig.player.objects.push(item);
     setGameConfig(newConfig);
   }
 

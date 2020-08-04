@@ -534,10 +534,7 @@
         "choices": [
             {
                 "text": "Pousser votre plus beau cri de guerre et charger le dragon !",
-                "chanceAction": {
-                    "chance": 2,
-                    "target": "salle_au_tresor_2"
-                }
+                "target": "salle_au_tresor_2"
             },
             {
                 "text": "Réveiller le dragon puis engager une conversation.",
@@ -556,7 +553,7 @@
                 }
             },
             {
-                "text": "Brandir les documents tels les saint écrits.",
+                "text": "Brandir les documents tels les saints écrits.",
                 "target": "salle_au_tresor_8",
                 "itemAction": {
                     "item": "Pile de 3 kilo de documents administratifs"

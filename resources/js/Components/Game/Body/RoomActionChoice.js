@@ -1,23 +1,13 @@
 import React, {useContext} from 'react'
 import {GameConfigContext} from "../../../Context/GameConfigContext";
 
-export default function RoomActionChoice({choiceText, targetRoomActionCode, isBackToMenu, chanceActions}) {
+export default function RoomActionChoice({choiceText, targetRoomActionCode, isBackToMenu}) {
     const {gameConfig, changeRoomAction, goToBossRoom, goToNewRoom, resetGameConfig} = useContext(GameConfigContext);
 
     const goToRoomAction = () => {
         if (isBackToMenu) {
             console.log('-- Back to menu');
             resetGameConfig();
-        }
-        else if (chanceActions !== null) {
-            const attempt = Math.floor(Math.random() * Math.floor(10));
-            if (attempt <= chanceActions.chance) {
-                console.log('-- Chance action success');
-                changeRoomAction(chanceActions.successRoomActionCode);
-            } else {
-                console.log('-- Chance action failure');
-                changeRoomAction(chanceActions.failureRoomActionCode);
-            }
         }
         else if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
             console.log('-- Go to boss room');

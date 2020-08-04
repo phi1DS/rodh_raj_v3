@@ -1,6 +1,9 @@
 import React, {useContext} from 'react'
 import {GameConfigContext} from "../../../Context/GameConfigContext";
 import RoomActionChoice from "./RoomActionChoice";
+import RoomActionSpecialChoice from "./RoomActionSpecialChoice";
+import RoomActionLockedChoice from "./RoomActionLockedChoice";
+import RoomActionChanceChoice from "./RoomActionChanceChoice";
 
 export default function RoomAction() {
     const {gameConfig} = useContext(GameConfigContext);
@@ -25,19 +28,21 @@ export default function RoomAction() {
             <div className="room_choices">
                 {
                     gameConfig.currentRoomAction.choices.map((choice, index) => {
-                            const isBackToMenu = choice.hasOwnProperty('isBackToMenu');
-
-                            let chanceActions = null;
-                            if (choice.hasOwnProperty('chanceAction')) {
-                                chanceActions = choice.chanceAction
+                            if (choice.hasOwnProperty('itemAction')) {
+                                return gameConfig.player.objects.includes(choice.itemAction.item) ?
+                                    <RoomActionSpecialChoice choiceText={choice.text} targetRoomActionCode={choice.target ?? false} key={index}/> :
+                                    <RoomActionLockedChoice choiceText={choice.text} key={index}/>;
                             }
-
-                            return <RoomActionChoice choiceText={choice.text}
-                                                     targetRoomActionCode={choice.target ?? false}
-                                                     isBackToMenu={isBackToMenu}
-                                                     chanceActions={chanceActions}
-                                                     key={index}
-                            />
+                            else if (choice.hasOwnProperty('chanceAction')){
+                                return <RoomActionChanceChoice choiceText={choice.text} chanceActions={choice.chanceAction} key={index}/>
+                            }
+                            else {
+                                return <RoomActionChoice choiceText={choice.text}
+                                                         targetRoomActionCode={choice.target ?? false}
+                                                         isBackToMenu={choice.hasOwnProperty('isBackToMenu')}
+                                                         key={index}
+                                />
+                            }
                         }
                     )
                 }
