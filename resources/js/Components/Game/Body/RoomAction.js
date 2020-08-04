@@ -24,9 +24,21 @@ export default function RoomAction() {
 
             <div className="room_choices">
                 {
-                    gameConfig.currentRoomAction.choices.map((choice, index) => (
-                            <RoomActionChoice choiceText={choice.text} targetRoomActionCode={choice.target ?? false} key={index}/>
-                        )
+                    gameConfig.currentRoomAction.choices.map((choice, index) => {
+                            const isBackToMenu = choice.hasOwnProperty('isBackToMenu');
+
+                            let chanceActions = null;
+                            if (choice.hasOwnProperty('chanceAction')) {
+                                chanceActions = choice.chanceAction
+                            }
+
+                            return <RoomActionChoice choiceText={choice.text}
+                                                     targetRoomActionCode={choice.target ?? false}
+                                                     isBackToMenu={isBackToMenu}
+                                                     chanceActions={chanceActions}
+                                                     key={index}
+                            />
+                        }
                     )
                 }
             </div>

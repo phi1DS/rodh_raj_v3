@@ -7,8 +7,8 @@ use App\Services\RoomService;
 
 class RoomRepository
 {
-    const START_ROOM_ID = 'roomAction1_1';
-    const END_ROOM_ID = 'roomAction_boss_1';
+    const START_ROOM_CODE = 'entree_du_donjon_1';
+    const END_ROOM_CODE = 'salle_du_boss_1';
 
     public static function getRoomsData(): array
     {
@@ -19,7 +19,7 @@ class RoomRepository
     {
         $roomsData = self::getRoomsData();
         RoomService::filerStartRoomActions($roomsData);
-        RoomService::filerNonStaticRooms($roomsData, [self::START_ROOM_ID, self::END_ROOM_ID]);
+        RoomService::filerNonStaticRooms($roomsData, [self::START_ROOM_CODE, self::END_ROOM_CODE]);
 
         return [$roomsData[array_rand($roomsData, 1)]];
     }
@@ -37,26 +37,13 @@ class RoomRepository
         return [];
     }
 
-    public static function getRoomActionById($staticRoomId): array
-    {
-        $roomsData = self::getRoomsData();
-
-        foreach ($roomsData as $roomId => $roomData) {
-            if ($roomId === $staticRoomId) {
-                return [$roomData];
-            }
-        }
-
-        return [];
-    }
-
     public static function getStartRoom(): array
     {
-        return self::getRoomActionById(self::START_ROOM_ID);
+        return self::getRoomActionByCode(self::START_ROOM_CODE);
     }
 
     public static function getEndRoom(): array
     {
-        return self::getRoomActionById(self::END_ROOM_ID);
+        return self::getRoomActionByCode(self::END_ROOM_CODE);
     }
 }

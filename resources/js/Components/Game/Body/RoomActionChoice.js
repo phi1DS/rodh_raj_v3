@@ -1,25 +1,36 @@
 import React, {useContext} from 'react'
 import {GameConfigContext} from "../../../Context/GameConfigContext";
 
-export default function RoomActionChoice({choiceText, targetRoomActionCode}) {
-    const {gameConfig, changeRoomAction, goToBossRoom, goToNewRoom} = useContext(GameConfigContext);
+export default function RoomActionChoice({choiceText, targetRoomActionCode, isBackToMenu, chanceActions}) {
+    const {gameConfig, changeRoomAction, goToBossRoom, goToNewRoom, resetGameConfig} = useContext(GameConfigContext);
 
     const goToRoomAction = () => {
-
-        console.log(gameConfig.roomNumber);
-        console.log(gameConfig.maxRoomNumber);
-
-        if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
+        if (isBackToMenu) {
+            console.log('-- Back to menu');
+            resetGameConfig();
+        }
+        else if (chanceActions !== null) {
+            const attempt = Math.floor(Math.random() * Math.floor(10));
+            if (attempt <= chanceActions.chance) {
+                console.log('-- Chance action success');
+                changeRoomAction(chanceActions.successRoomActionCode);
+            } else {
+                console.log('-- Chance action failure');
+                changeRoomAction(chanceActions.failureRoomActionCode);
+            }
+        }
+        else if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
+            console.log('-- Go to boss room');
             goToBossRoom();
-            return;
         }
-
-        if (targetRoomActionCode === false) {
+        else if (targetRoomActionCode) {
+            console.log('-- Go to roomAction');
+            changeRoomAction(targetRoomActionCode);
+        }
+        else {
+            console.log('-- Go to new room');
             goToNewRoom();
-            return;
         }
-
-        changeRoomAction(targetRoomActionCode);
     };
 
     return (

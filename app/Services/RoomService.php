@@ -17,18 +17,14 @@ class RoomService
         $roomsData = $startRoomAction;
     }
 
-    public static function filerNonStaticRooms(array &$roomsData, $staticRoomsIds): void
+    public static function filerNonStaticRooms(array &$roomsData, $staticRoomsCode): void
     {
-        $nonStaticRooms = [];
-
-        foreach ($roomsData as $roomId => $roomData) {
-            foreach ($staticRoomsIds as $staticRoomsId) {
-                if ($roomId !== $staticRoomsId) {
-                    $nonStaticRooms[] = $roomData;
+        foreach ($roomsData as $roomDataKey => $roomData) {
+            foreach ($staticRoomsCode as $staticRoomCode) {
+                if ($roomData['code'] === $staticRoomCode) {
+                    unset($roomsData[$roomDataKey]);
                 }
             }
         }
-
-        $roomsData = $nonStaticRooms;
     }
 }

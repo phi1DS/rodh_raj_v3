@@ -65826,9 +65826,18 @@ function RoomAction() {
   }, gameConfig.currentRoomAction.choices.map(function (choice, index) {
     var _choice$target;
 
+    var isBackToMenu = choice.hasOwnProperty('isBackToMenu');
+    var chanceActions = null;
+
+    if (choice.hasOwnProperty('chanceAction')) {
+      chanceActions = choice.chanceAction;
+    }
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoomActionChoice__WEBPACK_IMPORTED_MODULE_2__["default"], {
       choiceText: choice.text,
       targetRoomActionCode: (_choice$target = choice.target) !== null && _choice$target !== void 0 ? _choice$target : false,
+      isBackToMenu: isBackToMenu,
+      chanceActions: chanceActions,
       key: index
     });
   })));
@@ -65853,29 +65862,41 @@ __webpack_require__.r(__webpack_exports__);
 
 function RoomActionChoice(_ref) {
   var choiceText = _ref.choiceText,
-      targetRoomActionCode = _ref.targetRoomActionCode;
+      targetRoomActionCode = _ref.targetRoomActionCode,
+      isBackToMenu = _ref.isBackToMenu,
+      chanceActions = _ref.chanceActions;
 
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
       gameConfig = _useContext.gameConfig,
       changeRoomAction = _useContext.changeRoomAction,
       goToBossRoom = _useContext.goToBossRoom,
-      goToNewRoom = _useContext.goToNewRoom;
+      goToNewRoom = _useContext.goToNewRoom,
+      resetGameConfig = _useContext.resetGameConfig;
 
   var goToRoomAction = function goToRoomAction() {
-    console.log(gameConfig.roomNumber);
-    console.log(gameConfig.maxRoomNumber);
+    if (isBackToMenu) {
+      console.log('-- Back to menu');
+      resetGameConfig();
+    } else if (chanceActions !== null) {
+      var attempt = Math.floor(Math.random() * Math.floor(10));
 
-    if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
+      if (attempt <= chanceActions.chance) {
+        console.log('-- Chance action success');
+        changeRoomAction(chanceActions.successRoomActionCode);
+      } else {
+        console.log('-- Chance action failure');
+        changeRoomAction(chanceActions.failureRoomActionCode);
+      }
+    } else if (gameConfig.roomNumber >= gameConfig.maxRoomNumber && targetRoomActionCode === false) {
+      console.log('-- Go to boss room');
       goToBossRoom();
-      return;
-    }
-
-    if (targetRoomActionCode === false) {
+    } else if (targetRoomActionCode) {
+      console.log('-- Go to roomAction');
+      changeRoomAction(targetRoomActionCode);
+    } else {
+      console.log('-- Go to new room');
       goToNewRoom();
-      return;
     }
-
-    changeRoomAction(targetRoomActionCode);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66117,7 +66138,8 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
       name: "",
       text: "",
       choices: []
-    }
+    },
+    alreadyPassedRoomsCodes: []
   };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(_objectSpread({}, defaultGameConfig)),
@@ -66128,6 +66150,23 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-start', changeRoomFromResponse); // TODO fetch local storage config ? | sinon prend la première
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // si dans blacklist, refais une promesse
+    // BlackList
+    if (gameConfig.alreadyPassedRoomsCodes.includes(gameConfig.currentRoomAction.code)) {
+      fetchRandomRoom();
+      return;
+    }
+  }, [gameConfig.currentRoomAction]);
+
+  function resetGameConfig() {
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-start', function (response) {
+      var newConfig = _objectSpread({}, defaultGameConfig);
+
+      newConfig.currentRoomAction = response[0];
+      setGameConfig(newConfig);
+    });
+  }
 
   function roomPassed() {
     var newConfig = _objectSpread({}, gameConfig);
@@ -66144,7 +66183,6 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
   var changeRoomFromResponse = function changeRoomFromResponse(response) {
     var newConfig = _objectSpread({}, gameConfig);
 
-    console.log('api room response');
     console.log(response[0]);
     newConfig.currentRoomAction = response[0];
     setGameConfig(newConfig);
@@ -66158,12 +66196,18 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-end', changeRoomFromResponse);
   }
 
-  function goToNewRoom() {
-    var gameConfigClone = _objectSpread({}, gameConfig);
+  function fetchRandomRoom(response) {
+    var newConfig = _objectSpread({}, gameConfig);
 
-    gameConfigClone.roomNumber++;
-    setGameConfig(gameConfigClone);
-    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', changeRoomFromResponse);
+    newConfig.alreadyPassedRoomsCodes.push(newConfig.currentRoomAction.code);
+    newConfig.roomNumber = newConfig.roomNumber + 1;
+    console.log(response[0]);
+    newConfig.currentRoomAction = response[0];
+    setGameConfig(newConfig);
+  }
+
+  function goToNewRoom() {
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', fetchRandomRoom);
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(GameConfigContext.Provider, {
@@ -66173,7 +66217,8 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
       roomPassed: roomPassed,
       goToNewRoom: goToNewRoom,
       goToBossRoom: goToBossRoom,
-      changeRoomAction: changeRoomAction
+      changeRoomAction: changeRoomAction,
+      resetGameConfig: resetGameConfig
     }
   }, children);
 };

@@ -17,7 +17,8 @@ export const GameConfigProvider = ({children}) => {
             name: "",
             text: "",
             choices: []
-        }
+        },
+        alreadyPassedRoomsCodes: []
     };
 
     const [gameConfig, setGameConfig] = useState({
@@ -25,9 +26,29 @@ export const GameConfigProvider = ({children}) => {
     });
 
     useEffect(() => {
-        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-start', changeRoomFromResponse)
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-start', changeRoomFromResponse);
+
         // TODO fetch local storage config ? | sinon prend la première
     }, []);
+
+    useEffect(() => {
+        // si dans blacklist, refais une promesse
+        // BlackList
+        if (gameConfig.alreadyPassedRoomsCodes.includes(gameConfig.currentRoomAction.code)) {
+            fetchRandomRoom();
+            return;
+        }
+
+    }, [gameConfig.currentRoomAction]);
+
+    function resetGameConfig() {
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-start', (response) => {
+            const newConfig = {...defaultGameConfig};
+            newConfig.currentRoomAction = response[0];
+
+            setGameConfig(newConfig);
+        });
+    }
 
     function roomPassed() {
         const newConfig = {...gameConfig};
@@ -43,7 +64,6 @@ export const GameConfigProvider = ({children}) => {
     const changeRoomFromResponse = (response) => {
         const newConfig = {...gameConfig};
 
-        console.log('api room response');
         console.log(response[0]);
 
         newConfig.currentRoomAction = response[0];
@@ -59,12 +79,19 @@ export const GameConfigProvider = ({children}) => {
         fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-end', changeRoomFromResponse);
     }
 
-    function goToNewRoom() {
-        const gameConfigClone = {...gameConfig};
-        gameConfigClone.roomNumber++;
-        setGameConfig(gameConfigClone);
+    function fetchRandomRoom(response) {
+        const newConfig = {...gameConfig};
+        newConfig.alreadyPassedRoomsCodes.push(newConfig.currentRoomAction.code);
+        newConfig.roomNumber = newConfig.roomNumber + 1;
 
-        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', changeRoomFromResponse);
+        console.log(response[0]);
+        newConfig.currentRoomAction = response[0];
+
+        setGameConfig(newConfig);
+    }
+
+    function goToNewRoom() {
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
     }
 
     return(
@@ -74,8 +101,8 @@ export const GameConfigProvider = ({children}) => {
             roomPassed,
             goToNewRoom,
             goToBossRoom,
-            changeRoomAction
-
+            changeRoomAction,
+            resetGameConfig
         }}>
             {children}
         </GameConfigContext.Provider>
