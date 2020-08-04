@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('game');
 })->name('homepage');
 
+Route::get('/dead', function () {
+    return 'dead';
+})->name('dead');
+
 Route::get('/laravel', function () {
     return view('welcome');
 })->name('laravel');
-
-Route::get('addItem')->name('add_item')->uses('ItemController@add');
-Route::get('page')->name('page_item')->uses('ItemController@page');
-

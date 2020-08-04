@@ -32,13 +32,9 @@ export const GameConfigProvider = ({children}) => {
     }, []);
 
     useEffect(() => {
-        // si dans blacklist, refais une promesse
-        // BlackList
-        if (gameConfig.alreadyPassedRoomsCodes.includes(gameConfig.currentRoomAction.code)) {
-            fetchRandomRoom();
-            return;
+        if (gameConfig.currentRoomAction.hasOwnProperty('looseLife')) {
+            looseLife(gameConfig.currentRoomAction.looseLife)
         }
-
     }, [gameConfig.currentRoomAction]);
 
     function resetGameConfig() {
@@ -91,7 +87,25 @@ export const GameConfigProvider = ({children}) => {
     }
 
     function goToNewRoom() {
+        // TODO si dans blacklist, charge une autre salle
+        // let room = null;
+        //
+        // while(room === null || gameConfig.alreadyPassedRoomsCodes.includes(room.code)) {
+        //     fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
+        // }
+
         fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
+    }
+
+    function looseLife(lifepoint) {
+        const newConfig = {...gameConfig};
+        newConfig.player.life = newConfig.player.life - lifepoint;
+
+        if (newConfig.player.life <= 0) {
+            window.location.href =  location.protocol + "//" + location.host + "/dead";
+        }
+
+        setGameConfig(newConfig);
     }
 
     return(
@@ -102,7 +116,8 @@ export const GameConfigProvider = ({children}) => {
             goToNewRoom,
             goToBossRoom,
             changeRoomAction,
-            resetGameConfig
+            resetGameConfig,
+            looseLife
         }}>
             {children}
         </GameConfigContext.Provider>

@@ -65927,55 +65927,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 function RoomFooter() {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
       gameConfig = _useContext.gameConfig;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      lifeBars = _useState2[0],
-      setLifeBars = _useState2[1];
-
-  var changeLifeBars = function changeLifeBars() {
-    var lifeBarsCopy = [];
-
-    for (var i = 0; i < gameConfig.player.life; i++) {
-      lifeBarsCopy.push(i);
-    }
-
-    setLifeBars(lifeBarsCopy);
-  };
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    changeLifeBars();
-  }, [gameConfig.roomNumber]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_life character_child"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vie :")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "character_attribute"
-  }, lifeBars.map(function (lifePoint) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      key: lifePoint
-    }, "|\xA0");
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vie : ", gameConfig.player.life))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_items character_child"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_title"
@@ -66151,11 +66115,8 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-start', changeRoomFromResponse); // TODO fetch local storage config ? | sinon prend la première
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    // si dans blacklist, refais une promesse
-    // BlackList
-    if (gameConfig.alreadyPassedRoomsCodes.includes(gameConfig.currentRoomAction.code)) {
-      fetchRandomRoom();
-      return;
+    if (gameConfig.currentRoomAction.hasOwnProperty('looseLife')) {
+      looseLife(gameConfig.currentRoomAction.looseLife);
     }
   }, [gameConfig.currentRoomAction]);
 
@@ -66207,7 +66168,25 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
   }
 
   function goToNewRoom() {
+    // TODO si dans blacklist, charge une autre salle
+    // let room = null;
+    //
+    // while(room === null || gameConfig.alreadyPassedRoomsCodes.includes(room.code)) {
+    //     fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
+    // }
     Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', fetchRandomRoom);
+  }
+
+  function looseLife(lifepoint) {
+    var newConfig = _objectSpread({}, gameConfig);
+
+    newConfig.player.life = newConfig.player.life - lifepoint;
+
+    if (newConfig.player.life <= 0) {
+      window.location.href = location.protocol + "//" + location.host + "/dead";
+    }
+
+    setGameConfig(newConfig);
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(GameConfigContext.Provider, {
@@ -66218,7 +66197,8 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
       goToNewRoom: goToNewRoom,
       goToBossRoom: goToBossRoom,
       changeRoomAction: changeRoomAction,
-      resetGameConfig: resetGameConfig
+      resetGameConfig: resetGameConfig,
+      looseLife: looseLife
     }
   }, children);
 };
