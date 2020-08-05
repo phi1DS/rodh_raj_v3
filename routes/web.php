@@ -18,7 +18,7 @@ Route::get('/', function () {
 })->name('homepage');
 
 Route::get('/dead', function () {
-    return 'dead';
+    return view('dead');
 })->name('dead');
 
 Route::get('/laravel', function () {

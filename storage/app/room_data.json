@@ -14,7 +14,7 @@
         "code": "entree_du_donjon_1",
         "isStartRoomAction": "true",
         "name": "Entrée du donjon",
-        "text": "Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.\nCertaines épreuves marquent un virage dans une existence. D'autres ne sont que ramassis de futilités posées sur le chemin de la vie tel un étron fumant attendant patiemment le pied du passant distrait. Un donjon est l'épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. De biens nombreuses raisons de s'aventurer dans un endroit ou le danger est à chaque tournant.\nOserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?",
+        "text": "Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.\nCertaines épreuves marquent un virage dans une existence. D'autres ne sont qu'un ramassis de futilités posées sur le chemin de la vie tel l'étron fumant attendant patiemment le pied du passant distrait. Un donjon est l'épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. Oserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?",
         "choices": [
             {
                 "text": "Entrer dans le Donjon."
@@ -162,7 +162,7 @@
         "code": "salle_au_mur_1",
         "isStartRoomAction": "true",
         "name": "Salle au Mur",
-        "text": "Pour une fois vous voilà face à autre chose que des horreurs: un mur. Celui-ci faisant une dizaine de mètres de haut. Vous apercevez la porte de la salle suivante en son sommet.",
+        "text": "Pour une fois vous voilà face à autre chose que des horreurs: un mur. Celui-ci fait une dizaine de mètres de haut. Vous apercevez la porte de la salle suivante en son sommet.",
         "choices": [
             {
                 "text": "Utiliser l'échelle cachée dans un coin de la pièce.",
@@ -499,6 +499,7 @@
         "code": "salle_au_tresor_6",
         "name": "Salle au trésor",
         "text": "En vous approchant discrètement vous arrivez à repartir avec une partie du trésor.",
+        "addItem": "Pièces d'or",
         "choices": [
             {
                 "text": "Salle suivante"
