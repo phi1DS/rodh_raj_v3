@@ -122,7 +122,7 @@
         "text": "Succès ! Vous voilà en haut.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -184,7 +184,7 @@
         "text": "D'un coup bien placé, vous faites fuir le monstre vers un endroit sombre.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -195,7 +195,7 @@
         "text": "Le monstre vous administre un crochet de droit qui vous envoie valdinguer sur plusieurs mètres. Heureusement pour vous, l'élémentaire est plutôt lent et vos parvenez à fuir avec dignité",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -206,7 +206,7 @@
         "looseLife": -1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -250,7 +250,7 @@
         "text": "Salle brute !",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -261,7 +261,7 @@
         "text": "Vous poursuivrez donc votre aventure avec une multitudes de petites morsures sur tous le corps et surtout la honte d'avoir perdu face à des lutins.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -271,7 +271,7 @@
         "text": "Vous leurs réglez leurs comptes sans trop de problèmes. Après tout un lutin enragé reste un lutin.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -310,7 +310,7 @@
         "text": "les petites bêtes paniquent trop pour dire quoi que ce soit.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -324,7 +324,7 @@
                 "text": "Accepter."
             },
             {
-                "text": "Refuser poliment et continuer vers la salle suivante"
+                "text": "Refuser poliment et Continuer"
             }
         ]
     },
@@ -363,7 +363,7 @@
         "addItem": "Champignons bleus",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -374,7 +374,7 @@
         "text": "Vous êtes pris la main dans le sac ! Et recevez donc une main en travers de la figure.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -385,7 +385,7 @@
         "addItem": "Champignons bleus",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -396,7 +396,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -406,7 +406,7 @@
         "text": "Vous discutez de pluie et de beau temps dans un donjon.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -416,7 +416,7 @@
         "text": "En vous laissant aller à la conversation, vous apprenez que le maître du donjon à horreur de la mauvaise musique.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -491,7 +491,7 @@
         "text": "Vous passez à la salle suivante sur la pointe de vos pieds. Si bien que l'ongle de votre gros orteil droit se décolle.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -569,7 +569,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -580,7 +580,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -590,7 +590,7 @@
         "text": "Après avoir débattu pendant plus d'une demi-journée, vous sortez vainqueur en laissant derrière vous un homme désespéré et au bord du suicide.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -601,7 +601,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -611,7 +611,7 @@
         "text": "Vous n'avez même pas le temps de placer un coup d'épée que l'étrange personnage s'enfui à toutes jambes en criant.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -675,7 +675,7 @@
         "addItem": "Viande",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -701,7 +701,7 @@
         "addItem": "Canard en plastique",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -735,7 +735,7 @@
         "addItem": "Pile de 3 kilo de documents administratifs",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -746,7 +746,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -814,7 +814,7 @@
         "text": "Vous vous mettez à beugler comme un ivrogne et réveillez la majeure partie des monstres de salle. Heureusement pour vous, leurs gueules de bois empêchent leurs coups de vous atteindre. Vous atteignez la salle suivante sans encombres.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -825,7 +825,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -835,7 +835,7 @@
         "text": "Vous atteignez la porte de la salle suivnate sans problèmes. Les créatures étant trop occupés à décuver.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -846,7 +846,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -856,7 +856,7 @@
         "text": "Brutalement, tous les monstres se relève et reprennent leurs anciennes activités, à savoir: se taper dessus ou vider des tonneaux de bière dans un brouhaha assourdissant. Personne ne porte son attention sur vous. Vous en profitez donc pour atteindre la salle suivante.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -922,7 +922,7 @@
         "text": "Après avoir fait une série de petits pas, vous pensez apercevoir la sortie. C'est à ce moments précis que vos sens de chauve souris cessent de fonctionner. Vous vous prenez un objet dur en plein sur le nez. Vous poursuivez néanmoins et réussissez trouvez la porte vers la prochaine salle.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -933,7 +933,7 @@
         "looseLife": 2,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -943,7 +943,7 @@
         "text": "Vos esquives bien rythmés (ou votre chance, les dieux seuls savent) vous permettent d'éviter les tentacules crochus du monstre. Vous parvenez à atteindre la salle suivante en récupérant au passage le parchemin.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante"
+                "text": "Continuer"
             }
         ]
     },
@@ -969,7 +969,7 @@
         "addItem": "Parchemin magique",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -987,7 +987,7 @@
                 }
             },
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1014,7 +1014,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1044,7 +1044,7 @@
         "text": "Une potion dorée ? Donne-elle le pouvoir de transformer le plomb en or ? Chance aux jeux ? Remède contre la lèpre ? En tout cas, cette potion vous à l'air d'être bénéfique. Gloups. La potion a un goût de peinture pour radiateurs. Mais vous vous sentez mieux et continuez.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1112,7 +1112,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1122,7 +1122,7 @@
         "text": "Votre charge désespérée pred l'ennemi au dépourvu. Votre stratégie imparable vous permet de les anéantir un à un sans la moindre égratinure.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1132,7 +1132,7 @@
         "text": "Malgré votre mauvaise posture, vos sens d'aventurier reprennent le dessus et vous permet de venir à bout des gardes au prix de quelques légères coupures.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1142,7 +1142,7 @@
         "text": "Vous engagez la discussion. Les gardes, d'abord surpris, vous laissent passer, au nom de leur protestation contre les récentes coupes de leur solde.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1167,7 +1167,7 @@
         "text": "Vous exhibez vos muscles tout en essayant de paraitre dangereux. En vous voyant, les gardes haussent les épaules et reprennent leur partie sur fond d'accusation de triche. Vous auriez du vous en rappeller : vous n'avez pas de muscles.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1192,7 +1192,7 @@
         "text": "Vous enlevez vos bottes et avancez sur la pointe des pieds. Vous réussissez à passer sans vous faire voir. Les gardes ont rapidement repris leur partie, non sans se disputer sur fond d'accusation de triche.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1219,7 +1219,7 @@
         "text": "Quelle idée géniale : une personne qui passe est un moindre problème quand la moitié de la salle est en feu. La prochaine fois les gardes feront attention à nettoyer la graisse après les barbecues. Par contre, la  force des flammes vous a autant surpris que les gardes, vous vous en tirez avec un bras qui sent le bacon trop grillé.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1230,7 +1230,7 @@
         "text": "Vous abordez les gardes en leurs montrant votre jeu de cartes collector. Les règles improvisée semblent être appréciées. Vous vous faites quelques parties en buvant de la bière. Vous laissez cependant le jeu de cartes à vos nouveaux amis.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1291,7 +1291,7 @@
         "text": "Votre attaque improvisée a touché son but. En vous approchant, vous trouvez trois cadavres d'araignées d'environs deux mètres de diamètre, la chitine fendue par vos flèches. Avec un frisson, vous enjambez les corps et passez à la suite.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1302,7 +1302,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1312,7 +1312,7 @@
         "text": "Avec un morceau de tissu et des grands gestes, vous arrivez à dompter les bêtes, qui se réfugient dans un coin sombre et vous laissent passer.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1322,7 +1322,7 @@
         "text": "Vous ignorez les bêtes, et passez tout droit vers la sortie en récitant votre mantra. “Je fais un avec le script et le script est un avec moi.” Les bêtes s'écartent de votre passage.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1333,7 +1333,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1343,7 +1343,7 @@
         "text": "Vous courrez dans tous les sens en hurant. Autour de vous les sifflements des bêtes se font de plus en plus proches. Vous appercevez enfin la lumière au bout du tunnel et vous y précipitez à toute vitesse. Vous remarquez que les bêtes ne vous suivent pas. Sûrement ont elle peur de la lueur des torches.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1393,7 +1393,7 @@
         "text": "Vous montrez à ces volatiles qui est l'alpha, essentiellement en criant et en donnant des coups de pieds dans des tas de paille. Elles s'inclinent et vous laisse continuer.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1403,7 +1403,7 @@
         "text": "Du sang et des plumes. C'est tout ce qu'il reste des harpies après votre passage.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1414,7 +1414,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1424,7 +1424,7 @@
         "text": "Vous vous cachez sous un tas de paille. Et ça fonctionne ! Les harpies passent à autre chose et repartent.",
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },
@@ -1435,7 +1435,7 @@
         "looseLife": 1,
         "choices": [
             {
-                "text": "Continuer vers la salle suivante."
+                "text": "Continuer."
             }
         ]
     },

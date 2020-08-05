@@ -1,4 +1,4 @@
-function fetchFromApiPromise(apiUrl) {
+export function fetchFromApiPromise(apiUrl) {
     console.log(apiUrl);
 
     return fetch(apiUrl).then((response) => {

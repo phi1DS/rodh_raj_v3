@@ -1,13 +1,11 @@
 import React, {useContext} from 'react'
 import {GameConfigContext} from "../../../Context/GameConfigContext";
-import {shrinkWrapper} from "../../../Services/StyleActions";
 
 export default function RoomActionChanceChoice({choiceText, chanceActions}) {
     const {gameConfig, changeRoomAction} = useContext(GameConfigContext);
 
     const goToRoomAction = () => {
         if (gameConfig.player.isDead) {
-            shrinkWrapper();
             window.location.href =  location.protocol + "//" + location.host + "/dead";
         }
 

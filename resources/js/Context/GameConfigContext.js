@@ -1,6 +1,6 @@
 import React, {useState, createContext, useEffect} from 'react';
 import {ConstantCollection} from "../constants";
-import {fetchFromApi} from "../Services/ApiFetcher";
+import {fetchFromApi, fetchFromApiPromise} from "../Services/ApiFetcher";
 import {flashBodyGreenColor, flashObjectGreenColor, flashBodyRedColor, shrinkWrapper, openWrapper} from "../Services/StyleActions";
 
 export const GameConfigContext = createContext(null);
@@ -75,7 +75,9 @@ export const GameConfigProvider = ({children}) => {
 
     function changeRoomAction(roomActionCode) {
         shrinkWrapper();
-        fetchFromApi(ConstantCollection.API_BASE_URL + '/room-action/' + roomActionCode, changeRoomFromResponse)
+        if (!gameConfig.player.isDead) {
+            fetchFromApi(ConstantCollection.API_BASE_URL + '/room-action/' + roomActionCode, changeRoomFromResponse)
+        }
     }
 
     function goToBossRoom() {
@@ -92,17 +94,39 @@ export const GameConfigProvider = ({children}) => {
         // }
 
         shrinkWrapper();
-        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', (response) => {
-            const newConfig = {...gameConfig};
-            newConfig.alreadyPassedRoomsCodes.push(newConfig.currentRoomAction.code);
-            newConfig.roomNumber = newConfig.roomNumber + 1;
+        if (!gameConfig.player.isDead) {
+            fetchNewRoomFromApi().then((newConfig) => {
+                openWrapper();
+                setGameConfig(newConfig);
+            });
+        }
+    }
 
-            console.log(response[0]);
-            newConfig.currentRoomAction = response[0];
+    async function fetchNewRoomFromApi() {
+        const url = ConstantCollection.API_BASE_URL + '/room/get-random';
+        let roomCode = null;
+        let valid = false;
+        const newConfig = {...gameConfig};
+        newConfig.roomNumber = newConfig.roomNumber + 1;
 
-            openWrapper();
-            setGameConfig(newConfig);
-        });
+        while (!valid) {
+            await fetchFromApiPromise(url).then((response) => {
+                console.log(response[0]);
+
+                return response[0];
+            }).then((roomResponse) => {
+                roomCode = roomResponse.code;
+                if (!gameConfig.alreadyPassedRoomsCodes.includes(roomCode)) {
+                    valid = true;
+                    newConfig.currentRoomAction = roomResponse;
+                    newConfig.alreadyPassedRoomsCodes.push(roomResponse.code);
+                } else {
+                    console.log('ALREADY PASSED ROOM');
+                }
+            });
+        }
+
+        return newConfig;
     }
 
     function changeLife(lifepoint) {

@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {GameConfigContext} from "../../../Context/GameConfigContext";
+import {shrinkWrapper} from "../../../Services/StyleActions";
 
 export default function RoomActionChoice({choiceText, targetRoomActionCode, isBackToMenu}) {
     const {gameConfig, changeRoomAction, goToBossRoom, goToNewRoom, resetGameConfig} = useContext(GameConfigContext);
