@@ -894,7 +894,7 @@
         "code": "la_taverne_du_donjon_1",
         "name": "La taverne du donjon",
         "isStartRoomAction": "true",
-        "text": "Vous en aviez déjà entendu parler dans des légendes, mais jamais vous n'aurez imaginé y mettre les pieds. Vous voici dans la taverne du donjon. Après avoir mis un premier pas dans la pièce faiblement éclairé, vous êtes assailli par une forte odeur d'alcool et de vomi. Autour de vous se tient la majorité des monstres contenus dans votre bestiaire. Les festivités de la veille ayant mal tournés, ils sont soit ivre mort, soit assommés et traînent çà et là entre des tables en miettes.",
+        "text": "Vous en aviez déjà entendu parler dans des légendes, mais jamais vous n'aurez imaginé y mettre les pieds. Vous voici dans la taverne du donjon. Après avoir mis un premier pas dans la pièce faiblement éclairé, vous êtes assailli par une forte odeur d'alcool et de vomi. Autour de vous se tient la majorité des monstres contenus dans votre bestiaire. Les festivités de la veille ayant mal tournés, ils sont soit ivre mort, soit assommés, traînant çà et là entre des tables en miettes.",
         "choices": [
             {
                 "text": "Traverser la salle sans se faire remarquer.",
@@ -965,6 +965,7 @@
         "code": "la_chambre_froide_4",
         "name": "La chambre froide",
         "text": "Vous libérez sans problèmes le parchemin prisonnier de la glace et le mettez dans votre sac.",
+        "addItem": "Parchemin magique",
         "choices": [
             {
                 "text": "Continuer vers la salle suivante."

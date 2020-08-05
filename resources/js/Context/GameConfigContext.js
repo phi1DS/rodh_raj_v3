@@ -28,7 +28,7 @@ export const GameConfigProvider = ({children}) => {
     useEffect(() => {
         fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-start', changeRoomFromResponse);
 
-        // TODO fetch local storage config ? | sinon prend la première
+        // TODO fetch local stored config ? | sinon prend la première
     }, []);
 
     useEffect(() => {
@@ -99,11 +99,22 @@ export const GameConfigProvider = ({children}) => {
         // }
 
         fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
+        // console.log(document.getElementById('wrapper'));
+        // document.getElementById('wrapper').style.transform = "rotate(360deg)";
+        // setInterval(() => {
+        //     document.getElementById('wrapper').style.transform = "";
+        // }, 300);
+
     }
 
     function looseLife(lifepoint) {
         const newConfig = {...gameConfig};
         newConfig.player.life = newConfig.player.life - lifepoint;
+
+        document.body.style.background = "red";
+        setInterval(() => {
+            document.body.style.background = "inherit";
+        }, 300);
 
         if (newConfig.player.life <= 0) {
             window.location.href =  location.protocol + "//" + location.host + "/dead";

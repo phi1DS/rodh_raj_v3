@@ -8,7 +8,7 @@ export default function GameWrapper() {
 
     return (
         <GameConfigProvider>
-            <div className="wrapper">
+            <div className="wrapper" id="wrapper">
 
                 <div className="container_donjon">
                     <RoomHeader/>

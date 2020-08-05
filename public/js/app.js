@@ -65987,9 +65987,11 @@ __webpack_require__.r(__webpack_exports__);
 function RoomActionLockedChoice(_ref) {
   var choiceText = _ref.choiceText;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "room_choice bckg-red",
+    className: "room_choice bckg-grey",
     title: "Vous n'avez pas l'objet nécéssaire"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "roomLock"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "fl"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "/img/fleche.png",
@@ -66104,7 +66106,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function GameWrapper() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "wrapper"
+    className: "wrapper",
+    id: "wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container_donjon"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_RoomHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_RoomFooter__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body_RoomAction__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
@@ -66159,6 +66162,7 @@ function RoomHeader() {
       roomNumberArrayCopy.push(i);
     }
 
+    roomNumberArrayCopy.push('Boss !');
     setRoomNumberArray(roomNumberArrayCopy);
   };
 
@@ -66168,10 +66172,10 @@ function RoomHeader() {
     className: "room_title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, gameConfig.currentRoomAction.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_number"
-  }, roomNumberArray.map(function (number) {
+  }, roomNumberArray.map(function (number, index) {
     return number === gameConfig.roomNumber ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "underLined",
-      key: number
+      key: index
     }, number) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: number
     }, number);
@@ -66241,7 +66245,7 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
       setGameConfig = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-start', changeRoomFromResponse); // TODO fetch local storage config ? | sinon prend la première
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-start', changeRoomFromResponse); // TODO fetch local stored config ? | sinon prend la première
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (gameConfig.currentRoomAction.hasOwnProperty('looseLife')) {
@@ -66307,13 +66311,21 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     // while(room === null || gameConfig.alreadyPassedRoomsCodes.includes(room.code)) {
     //     fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
     // }
-    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', fetchRandomRoom);
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', fetchRandomRoom); // console.log(document.getElementById('wrapper'));
+    // document.getElementById('wrapper').style.transform = "rotate(360deg)";
+    // setInterval(() => {
+    //     document.getElementById('wrapper').style.transform = "";
+    // }, 300);
   }
 
   function looseLife(lifepoint) {
     var newConfig = _objectSpread({}, gameConfig);
 
     newConfig.player.life = newConfig.player.life - lifepoint;
+    document.body.style.background = "red";
+    setInterval(function () {
+      document.body.style.background = "inherit";
+    }, 300);
 
     if (newConfig.player.life <= 0) {
       window.location.href = location.protocol + "//" + location.host + "/dead";
