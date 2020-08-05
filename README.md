@@ -8,8 +8,6 @@ php artisan serve
 
 ## Setup :
 
-create file database/database.sqlite
-
 ```sh
 composer install
 ```
@@ -36,7 +34,6 @@ php artisan key:generate
 
 ## WIP :
 
-- Player react context
-- Room display
-- Game flux
-- Game breakers
+- Classes
+- Room creation
+- ???
