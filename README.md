@@ -1,4 +1,4 @@
-# Basic inertia/react in Laravel integration
+# Story driven webgame using react
 
 ## Serve :
 
