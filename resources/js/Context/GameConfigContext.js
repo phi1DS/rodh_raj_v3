@@ -1,6 +1,7 @@
 import React, {useState, createContext, useEffect} from 'react';
 import {ConstantCollection} from "../constants";
 import {fetchFromApi} from "../Services/ApiFetcher";
+import {flashObjectGreenColor, flashBodyRedColor, shrinkWrapper, openWrapper} from "../Services/StyleActions";
 
 export const GameConfigContext = createContext(null);
 
@@ -65,29 +66,20 @@ export const GameConfigProvider = ({children}) => {
         const newConfig = {...gameConfig};
 
         console.log(response[0]);
-
         newConfig.currentRoomAction = response[0];
 
+        openWrapper();
         setGameConfig(newConfig);
     };
 
     function changeRoomAction(roomActionCode) {
+        shrinkWrapper();
         fetchFromApi(ConstantCollection.API_BASE_URL + '/room-action/' + roomActionCode, changeRoomFromResponse)
     }
 
     function goToBossRoom() {
+        shrinkWrapper();
         fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-end', changeRoomFromResponse);
-    }
-
-    function fetchRandomRoom(response) {
-        const newConfig = {...gameConfig};
-        newConfig.alreadyPassedRoomsCodes.push(newConfig.currentRoomAction.code);
-        newConfig.roomNumber = newConfig.roomNumber + 1;
-
-        console.log(response[0]);
-        newConfig.currentRoomAction = response[0];
-
-        setGameConfig(newConfig);
     }
 
     function goToNewRoom() {
@@ -98,23 +90,25 @@ export const GameConfigProvider = ({children}) => {
         //     fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
         // }
 
-        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
-        // console.log(document.getElementById('wrapper'));
-        // document.getElementById('wrapper').style.transform = "rotate(360deg)";
-        // setInterval(() => {
-        //     document.getElementById('wrapper').style.transform = "";
-        // }, 300);
+        shrinkWrapper();
+        fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', (response) => {
+            const newConfig = {...gameConfig};
+            newConfig.alreadyPassedRoomsCodes.push(newConfig.currentRoomAction.code);
+            newConfig.roomNumber = newConfig.roomNumber + 1;
 
+            console.log(response[0]);
+            newConfig.currentRoomAction = response[0];
+
+            openWrapper();
+            setGameConfig(newConfig);
+        });
     }
 
     function looseLife(lifepoint) {
         const newConfig = {...gameConfig};
         newConfig.player.life = newConfig.player.life - lifepoint;
 
-        document.body.style.background = "red";
-        setInterval(() => {
-            document.body.style.background = "inherit";
-        }, 300);
+        flashBodyRedColor();
 
         if (newConfig.player.life <= 0) {
             window.location.href =  location.protocol + "//" + location.host + "/dead";
@@ -126,6 +120,8 @@ export const GameConfigProvider = ({children}) => {
     function addItem(item) {
         const newConfig = {...gameConfig};
         newConfig.player.objects.push(item);
+
+        flashObjectGreenColor();
 
         setGameConfig(newConfig);
     }

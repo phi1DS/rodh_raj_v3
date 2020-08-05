@@ -66073,12 +66073,14 @@ function RoomFooter() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vie : ", gameConfig.player.life))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_items character_child"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "objects"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "character_title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Objets :")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, gameConfig.player.objects.map(function (object, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, object);
-  }))));
+  })))));
 }
 
 /***/ }),
@@ -66110,7 +66112,7 @@ function GameWrapper() {
     id: "wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container_donjon"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_RoomHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_RoomFooter__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body_RoomAction__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_RoomHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body_RoomAction__WEBPACK_IMPORTED_MODULE_4__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_RoomFooter__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 }
 
 /***/ }),
@@ -66162,7 +66164,7 @@ function RoomHeader() {
       roomNumberArrayCopy.push(i);
     }
 
-    roomNumberArrayCopy.push('Boss !');
+    roomNumberArrayCopy.push('Boss');
     setRoomNumberArray(roomNumberArrayCopy);
   };
 
@@ -66172,14 +66174,7 @@ function RoomHeader() {
     className: "room_title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, gameConfig.currentRoomAction.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_number"
-  }, roomNumberArray.map(function (number, index) {
-    return number === gameConfig.roomNumber ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "underLined",
-      key: index
-    }, number) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: number
-    }, number);
-  })));
+  }, gameConfig.roomNumber <= gameConfig.maxRoomNumber && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Salle : ", gameConfig.roomNumber, "/", gameConfig.maxRoomNumber), gameConfig.roomNumber > gameConfig.maxRoomNumber && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Salle du Boss")));
 }
 
 /***/ }),
@@ -66199,6 +66194,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
 /* harmony import */ var _Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/ApiFetcher */ "./resources/js/Services/ApiFetcher.js");
+/* harmony import */ var _Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/StyleActions */ "./resources/js/Services/StyleActions.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -66216,6 +66212,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -66283,25 +66280,18 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
 
     console.log(response[0]);
     newConfig.currentRoomAction = response[0];
+    Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["openWrapper"])();
     setGameConfig(newConfig);
   };
 
   function changeRoomAction(roomActionCode) {
+    Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["shrinkWrapper"])();
     Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room-action/' + roomActionCode, changeRoomFromResponse);
   }
 
   function goToBossRoom() {
+    Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["shrinkWrapper"])();
     Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-end', changeRoomFromResponse);
-  }
-
-  function fetchRandomRoom(response) {
-    var newConfig = _objectSpread({}, gameConfig);
-
-    newConfig.alreadyPassedRoomsCodes.push(newConfig.currentRoomAction.code);
-    newConfig.roomNumber = newConfig.roomNumber + 1;
-    console.log(response[0]);
-    newConfig.currentRoomAction = response[0];
-    setGameConfig(newConfig);
   }
 
   function goToNewRoom() {
@@ -66311,21 +66301,24 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     // while(room === null || gameConfig.alreadyPassedRoomsCodes.includes(room.code)) {
     //     fetchFromApi(ConstantCollection.API_BASE_URL + '/room/get-random', fetchRandomRoom);
     // }
-    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', fetchRandomRoom); // console.log(document.getElementById('wrapper'));
-    // document.getElementById('wrapper').style.transform = "rotate(360deg)";
-    // setInterval(() => {
-    //     document.getElementById('wrapper').style.transform = "";
-    // }, 300);
+    Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["shrinkWrapper"])();
+    Object(_Services_ApiFetcher__WEBPACK_IMPORTED_MODULE_2__["fetchFromApi"])(_constants__WEBPACK_IMPORTED_MODULE_1__["ConstantCollection"].API_BASE_URL + '/room/get-random', function (response) {
+      var newConfig = _objectSpread({}, gameConfig);
+
+      newConfig.alreadyPassedRoomsCodes.push(newConfig.currentRoomAction.code);
+      newConfig.roomNumber = newConfig.roomNumber + 1;
+      console.log(response[0]);
+      newConfig.currentRoomAction = response[0];
+      Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["openWrapper"])();
+      setGameConfig(newConfig);
+    });
   }
 
   function looseLife(lifepoint) {
     var newConfig = _objectSpread({}, gameConfig);
 
     newConfig.player.life = newConfig.player.life - lifepoint;
-    document.body.style.background = "red";
-    setInterval(function () {
-      document.body.style.background = "inherit";
-    }, 300);
+    Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["flashBodyRedColor"])();
 
     if (newConfig.player.life <= 0) {
       window.location.href = location.protocol + "//" + location.host + "/dead";
@@ -66338,6 +66331,7 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     var newConfig = _objectSpread({}, gameConfig);
 
     newConfig.player.objects.push(item);
+    Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["flashObjectGreenColor"])();
     setGameConfig(newConfig);
   }
 
@@ -66383,6 +66377,40 @@ var fetchFromApi = function fetchFromApi(apiUrl, callback) {
     callback(fetchedData_api);
   });
 };
+
+/***/ }),
+
+/***/ "./resources/js/Services/StyleActions.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Services/StyleActions.js ***!
+  \***********************************************/
+/*! exports provided: flashObjectGreenColor, flashBodyRedColor, shrinkWrapper, openWrapper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flashObjectGreenColor", function() { return flashObjectGreenColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flashBodyRedColor", function() { return flashBodyRedColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shrinkWrapper", function() { return shrinkWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openWrapper", function() { return openWrapper; });
+function flashObjectGreenColor() {
+  document.getElementById('objects').style.backgroundColor = "#38c172";
+  setInterval(function () {
+    document.getElementById('objects').style.backgroundColor = "";
+  }, 300);
+}
+function flashBodyRedColor() {
+  document.body.style.background = "#e3342f";
+  setInterval(function () {
+    document.body.style.background = "";
+  }, 300);
+}
+function shrinkWrapper() {
+  document.getElementById('wrapper').style.transform = "scale(1, 0.1)";
+}
+function openWrapper() {
+  document.getElementById('wrapper').style.transform = "scale(1)";
+}
 
 /***/ }),
 

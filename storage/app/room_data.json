@@ -371,7 +371,7 @@
         "code": "salle_anciennement_vide_6",
         "name": "Salle anciennement vide",
         "looseLife": 1,
-        "text": "Vous êtes pris la main dans le sac ! Et recevez donc une autre en travers de la figure.",
+        "text": "Vous êtes pris la main dans le sac ! Et recevez donc une main en travers de la figure.",
         "choices": [
             {
                 "text": "Continuer vers la salle suivante"
@@ -1021,7 +1021,7 @@
         "code": "la_salle_de_l_engime_1",
         "name": "La chambre froide",
         "isStartRoomAction": "true",
-        "text": "Vous vous tenez à présent face à un mur comportant des gravures étranges. Suite à leur analyse et au micro pendant maladroitement du plafond tous les doutes s'efface quand à l'épreuve de cette salle: vous êtes face à un mur à énigmes.\n\nIl est écrit: “0+0 = ?”.",
+        "text": "Vous vous tenez à présent face à un mur comportant des gravures étranges. Suite à leur analyse et au micro pendant maladroitement du plafond tous les doutes s'efface quand à l'épreuve de cette salle: vous êtes face à un mur à énigmes.<br/><br/>Il est écrit: “0+0 = ?”.",
         "choices": [
             {
                 "text": "Répondre \"La tête à toto\".",

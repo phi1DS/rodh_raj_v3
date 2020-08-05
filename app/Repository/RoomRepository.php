@@ -12,7 +12,7 @@ class RoomRepository
 
     public static function getRoomsData(): array
     {
-        return $roomsData = json_decode(Storage::disk('private')->get('room_data.json'), true);
+        return $roomsData = json_decode(Storage::disk('local')->get('room_data.json'), true);
     }
 
     public static function getRandomStartRoomAction(): array

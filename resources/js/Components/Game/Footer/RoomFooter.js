@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import {GameConfigContext} from "../../../Context/GameConfigContext";
 
 export default function RoomFooter() {
@@ -10,14 +10,16 @@ export default function RoomFooter() {
                 <div className="character_title"><p>Vie : {gameConfig.player.life}</p></div>
             </div>
             <div className="character_items character_child">
-                <div className="character_title"><p>Objets :</p></div>
-                <ul>
-                    {
-                        gameConfig.player.objects.map((object, index) => (
-                            <div key={index}>{object}</div>
-                        ))
-                    }
-                </ul>
+                <div id='objects'>
+                    <div className="character_title"><p>Objets :</p></div>
+                    <ul>
+                        {
+                            gameConfig.player.objects.map((object, index) => (
+                                <div key={index}>{object}</div>
+                            ))
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     )

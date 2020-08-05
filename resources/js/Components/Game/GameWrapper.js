@@ -12,10 +12,10 @@ export default function GameWrapper() {
 
                 <div className="container_donjon">
                     <RoomHeader/>
-                    <RoomFooter/>
                     <RoomAction/>
                 </div>
             </div>
+            <RoomFooter/>
         </GameConfigProvider>
     )
 }

@@ -14,7 +14,7 @@ export default function RoomHeader() {
         for(let i = 1; i <= gameConfig.maxRoomNumber; i++) {
             roomNumberArrayCopy.push(i);
         }
-        roomNumberArrayCopy.push('Boss !');
+        roomNumberArrayCopy.push('Boss');
 
         setRoomNumberArray(roomNumberArrayCopy);
     };
@@ -26,11 +26,14 @@ export default function RoomHeader() {
             </div>
 
             <div className="room_number">
-                {roomNumberArray.map((number, index) => {
-                    return number === gameConfig.roomNumber ?
-                        <div className="underLined" key={index}>{number}</div> :
-                        <div key={number}>{number}</div>;
-                })}
+                {
+                    gameConfig.roomNumber <= gameConfig.maxRoomNumber &&
+                    <div>Salle : {gameConfig.roomNumber}/{gameConfig.maxRoomNumber}</div>
+                }
+                {
+                    gameConfig.roomNumber > gameConfig.maxRoomNumber &&
+                    <div>Salle du Boss</div>
+                }
             </div>
         </div>
     )
