@@ -1,7 +1,7 @@
 import React, {useState, createContext, useEffect} from 'react';
 import {ConstantCollection} from "../constants";
 import {fetchFromApi} from "../Services/ApiFetcher";
-import {flashObjectGreenColor, flashBodyRedColor, shrinkWrapper, openWrapper} from "../Services/StyleActions";
+import {flashBodyGreenColor, flashObjectGreenColor, flashBodyRedColor, shrinkWrapper, openWrapper} from "../Services/StyleActions";
 
 export const GameConfigContext = createContext(null);
 
@@ -9,6 +9,7 @@ export const GameConfigProvider = ({children}) => {
     const defaultGameConfig = {
         player: {
             life: 3,
+            isDead: false,
             objects: []
         },
         maxRoomNumber: 10,
@@ -19,7 +20,7 @@ export const GameConfigProvider = ({children}) => {
             text: "",
             choices: []
         },
-        alreadyPassedRoomsCodes: []
+        alreadyPassedRoomsCodes: [],
     };
 
     const [gameConfig, setGameConfig] = useState({
@@ -34,7 +35,7 @@ export const GameConfigProvider = ({children}) => {
 
     useEffect(() => {
         if (gameConfig.currentRoomAction.hasOwnProperty('looseLife')) {
-            looseLife(gameConfig.currentRoomAction.looseLife)
+            changeLife(gameConfig.currentRoomAction.looseLife)
         }
 
         if (gameConfig.currentRoomAction.hasOwnProperty('addItem')) {
@@ -104,14 +105,18 @@ export const GameConfigProvider = ({children}) => {
         });
     }
 
-    function looseLife(lifepoint) {
+    function changeLife(lifepoint) {
         const newConfig = {...gameConfig};
+
+        console.log('changeLife');
+        console.log(lifepoint);
+
         newConfig.player.life = newConfig.player.life - lifepoint;
 
-        flashBodyRedColor();
+        lifepoint > 0 ? flashBodyRedColor() : flashBodyGreenColor();
 
         if (newConfig.player.life <= 0) {
-            window.location.href =  location.protocol + "//" + location.host + "/dead";
+            newConfig.player.isDead = true;
         }
 
         setGameConfig(newConfig);
@@ -135,7 +140,7 @@ export const GameConfigProvider = ({children}) => {
             goToBossRoom,
             changeRoomAction,
             resetGameConfig,
-            looseLife
+            changeLife
         }}>
             {children}
         </GameConfigContext.Provider>

@@ -65875,6 +65875,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Context/GameConfigContext */ "./resources/js/Context/GameConfigContext.js");
+/* harmony import */ var _Services_StyleActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Services/StyleActions */ "./resources/js/Services/StyleActions.js");
+
 
 
 function RoomActionChanceChoice(_ref) {
@@ -65882,9 +65884,15 @@ function RoomActionChanceChoice(_ref) {
       chanceActions = _ref.chanceActions;
 
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
+      gameConfig = _useContext.gameConfig,
       changeRoomAction = _useContext.changeRoomAction;
 
   var goToRoomAction = function goToRoomAction() {
+    if (gameConfig.player.isDead) {
+      Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_2__["shrinkWrapper"])();
+      window.location.href = location.protocol + "//" + location.host + "/dead";
+    }
+
     var attempt = Math.floor(Math.random() * Math.floor(10));
 
     if (attempt <= chanceActions.chance) {
@@ -65939,6 +65947,10 @@ function RoomActionChoice(_ref) {
       resetGameConfig = _useContext.resetGameConfig;
 
   var goToRoomAction = function goToRoomAction() {
+    if (gameConfig.player.isDead) {
+      window.location.href = location.protocol + "//" + location.host + "/dead";
+    }
+
     if (isBackToMenu) {
       console.log('-- Back to menu');
       resetGameConfig();
@@ -66023,9 +66035,14 @@ function RoomActionSprecialChoice(_ref) {
       targetRoomActionCode = _ref.targetRoomActionCode;
 
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_GameConfigContext__WEBPACK_IMPORTED_MODULE_1__["GameConfigContext"]),
+      gameConfig = _useContext.gameConfig,
       changeRoomAction = _useContext.changeRoomAction;
 
   var goToRoomAction = function goToRoomAction() {
+    if (gameConfig.player.isDead) {
+      window.location.href = location.protocol + "//" + location.host + "/dead";
+    }
+
     console.log('-- Go to roomAction');
     changeRoomAction(targetRoomActionCode);
   };
@@ -66223,6 +66240,7 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
   var defaultGameConfig = {
     player: {
       life: 3,
+      isDead: false,
       objects: []
     },
     maxRoomNumber: 10,
@@ -66246,7 +66264,7 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (gameConfig.currentRoomAction.hasOwnProperty('looseLife')) {
-      looseLife(gameConfig.currentRoomAction.looseLife);
+      changeLife(gameConfig.currentRoomAction.looseLife);
     }
 
     if (gameConfig.currentRoomAction.hasOwnProperty('addItem')) {
@@ -66314,14 +66332,16 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
     });
   }
 
-  function looseLife(lifepoint) {
+  function changeLife(lifepoint) {
     var newConfig = _objectSpread({}, gameConfig);
 
+    console.log('changeLife');
+    console.log(lifepoint);
     newConfig.player.life = newConfig.player.life - lifepoint;
-    Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["flashBodyRedColor"])();
+    lifepoint > 0 ? Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["flashBodyRedColor"])() : Object(_Services_StyleActions__WEBPACK_IMPORTED_MODULE_3__["flashBodyGreenColor"])();
 
     if (newConfig.player.life <= 0) {
-      window.location.href = location.protocol + "//" + location.host + "/dead";
+      newConfig.player.isDead = true;
     }
 
     setGameConfig(newConfig);
@@ -66344,7 +66364,7 @@ var GameConfigProvider = function GameConfigProvider(_ref) {
       goToBossRoom: goToBossRoom,
       changeRoomAction: changeRoomAction,
       resetGameConfig: resetGameConfig,
-      looseLife: looseLife
+      changeLife: changeLife
     }
   }, children);
 };
@@ -66384,13 +66404,14 @@ var fetchFromApi = function fetchFromApi(apiUrl, callback) {
 /*!***********************************************!*\
   !*** ./resources/js/Services/StyleActions.js ***!
   \***********************************************/
-/*! exports provided: flashObjectGreenColor, flashBodyRedColor, shrinkWrapper, openWrapper */
+/*! exports provided: flashObjectGreenColor, flashBodyRedColor, flashBodyGreenColor, shrinkWrapper, openWrapper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flashObjectGreenColor", function() { return flashObjectGreenColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flashBodyRedColor", function() { return flashBodyRedColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flashBodyGreenColor", function() { return flashBodyGreenColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shrinkWrapper", function() { return shrinkWrapper; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openWrapper", function() { return openWrapper; });
 function flashObjectGreenColor() {
@@ -66401,6 +66422,12 @@ function flashObjectGreenColor() {
 }
 function flashBodyRedColor() {
   document.body.style.background = "#e3342f";
+  setInterval(function () {
+    document.body.style.background = "";
+  }, 300);
+}
+function flashBodyGreenColor() {
+  document.body.style.background = "#38c172";
   setInterval(function () {
     document.body.style.background = "";
   }, 300);

@@ -2,9 +2,13 @@ import React, {useContext} from 'react'
 import {GameConfigContext} from "../../../Context/GameConfigContext";
 
 export default function RoomActionSprecialChoice({choiceText, targetRoomActionCode}) {
-    const {changeRoomAction} = useContext(GameConfigContext);
+    const {gameConfig, changeRoomAction} = useContext(GameConfigContext);
 
     const goToRoomAction = () => {
+        if (gameConfig.player.isDead) {
+            window.location.href =  location.protocol + "//" + location.host + "/dead";
+        }
+
         console.log('-- Go to roomAction');
         changeRoomAction(targetRoomActionCode);
     };

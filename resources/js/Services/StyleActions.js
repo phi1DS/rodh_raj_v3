@@ -12,6 +12,13 @@ export function flashBodyRedColor() {
     }, 300);
 }
 
+export function flashBodyGreenColor() {
+    document.body.style.background = "#38c172";
+    setInterval(() => {
+        document.body.style.background = "";
+    }, 300);
+}
+
 export function shrinkWrapper() {
     document.getElementById('wrapper').style.transform = "scale(1, 0.1)";
 }

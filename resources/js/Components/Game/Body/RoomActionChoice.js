@@ -5,6 +5,10 @@ export default function RoomActionChoice({choiceText, targetRoomActionCode, isBa
     const {gameConfig, changeRoomAction, goToBossRoom, goToNewRoom, resetGameConfig} = useContext(GameConfigContext);
 
     const goToRoomAction = () => {
+        if (gameConfig.player.isDead) {
+            window.location.href =  location.protocol + "//" + location.host + "/dead";
+        }
+
         if (isBackToMenu) {
             console.log('-- Back to menu');
             resetGameConfig();
