@@ -4,6 +4,7 @@ import RoomActionChoice from "./RoomActionChoice";
 import RoomActionSpecialChoice from "./RoomActionSpecialChoice";
 import RoomActionLockedChoice from "./RoomActionLockedChoice";
 import RoomActionChanceChoice from "./RoomActionChanceChoice";
+import {PREFIX_PATH} from "../../../constants";
 
 export default function RoomAction() {
     const {gameConfig} = useContext(GameConfigContext);
@@ -12,10 +13,10 @@ export default function RoomAction() {
         <section className="room_action">
             <div className="room_mj">
                 <div className="room_mj_head">
-                    <img src="/img/mj.svg" draggable="false" alt="Game Master"/>
+                    <img src={PREFIX_PATH + "/img/mj.svg"} draggable="false" alt="Game Master"/>
                 </div>
                 <div className="room_mj_bubble">
-                    <img src="/img/bulle.svg" draggable="false" alt=""/>
+                    <img src={PREFIX_PATH + "/img/bulle.svg"} draggable="false" alt=""/>
                 </div>
             </div>
 

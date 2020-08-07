@@ -66551,6 +66551,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RoomActionSpecialChoice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RoomActionSpecialChoice */ "./resources/js/Components/Game/Body/RoomActionSpecialChoice.js");
 /* harmony import */ var _RoomActionLockedChoice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RoomActionLockedChoice */ "./resources/js/Components/Game/Body/RoomActionLockedChoice.js");
 /* harmony import */ var _RoomActionChanceChoice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./RoomActionChanceChoice */ "./resources/js/Components/Game/Body/RoomActionChanceChoice.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../constants */ "./resources/js/constants.js");
+
 
 
 
@@ -66568,13 +66570,13 @@ function RoomAction() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_mj_head"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "/img/mj.svg",
+    src: _constants__WEBPACK_IMPORTED_MODULE_6__["PREFIX_PATH"] + "/img/mj.svg",
     draggable: "false",
     alt: "Game Master"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "room_mj_bubble"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "/img/bulle.svg",
+    src: _constants__WEBPACK_IMPORTED_MODULE_6__["PREFIX_PATH"] + "/img/bulle.svg",
     draggable: "false",
     alt: ""
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67331,14 +67333,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!***********************************!*\
   !*** ./resources/js/constants.js ***!
   \***********************************/
-/*! exports provided: ConstantCollection */
+/*! exports provided: PREFIX_PATH, ConstantCollection */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PREFIX_PATH", function() { return PREFIX_PATH; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConstantCollection", function() { return ConstantCollection; });
+var PREFIX_PATH = '';
 var ConstantCollection = {
-  API_BASE_URL: location.protocol + "//" + location.host + "/api/v1.0"
+  API_BASE_URL: location.protocol + "//" + location.host + PREFIX_PATH + "/api/v1.0"
 };
 
 /***/ }),
@@ -67399,8 +67403,8 @@ if (document.getElementById("game-display")) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Tests\rodh_raj_v3\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Tests\rodh_raj_v3\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Philippe_doc\Code_et_Web\rodh_raj_v3_r\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Philippe_doc\Code_et_Web\rodh_raj_v3_r\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
