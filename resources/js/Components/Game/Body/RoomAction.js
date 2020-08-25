@@ -5,6 +5,7 @@ import RoomActionSpecialChoice from "./RoomActionSpecialChoice";
 import RoomActionLockedChoice from "./RoomActionLockedChoice";
 import RoomActionChanceChoice from "./RoomActionChanceChoice";
 import {PREFIX_PATH} from "../../../constants";
+import ReactHtmlParser from 'react-html-parser';
 
 export default function RoomAction() {
     const {gameConfig} = useContext(GameConfigContext);
@@ -22,7 +23,7 @@ export default function RoomAction() {
 
             <div className="room_txt">
                 <p>
-                    {gameConfig.currentRoomAction.text}
+                    { ReactHtmlParser(gameConfig.currentRoomAction.text) }
                 </p>
             </div>
 

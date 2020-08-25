@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.1.9",
-        "@inertiajs/inertia-react": "^0.1.6"
+        "@inertiajs/inertia-react": "^0.1.6",
+        "react-html-parser": "^2.0.2"
     }
 }
