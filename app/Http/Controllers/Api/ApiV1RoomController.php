@@ -9,8 +9,8 @@ class ApiV1RoomController extends Controller
 {
     public function getRandomRoom()
     {
-        return RoomRepository::getRandomStartRoomAction();
-//        return RoomRepository::getRoomActionByCode('salle_des_potions_1'); // debug specific room
+//        return RoomRepository::getRandomStartRoomAction();
+        return RoomRepository::getRoomActionByCode('salle_au_tresor_1'); // debug specific room
     }
 
     public function getStartRoom()
