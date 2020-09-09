@@ -1,0 +1,22 @@
+[
+    {
+        "code": "le_pigeonnier_1",
+        "name": "Le pigeonnier",
+        "isStartRoomAction": "true",
+        "text": "Vous arrivez dans un pigeonnier vide. Des graines trainent encore par terre. Les emplacements pour les volatiles vous semblent en revanche vraiment grands pour des pigeons.",
+        "choices": [
+            {
+                "text": "Faire du bruit.",
+                "target": "le_pigeonnier_2"
+            },
+            {
+                "text": "Fouiller les environs.",
+                "chanceAction": {
+                    "chance": 4,
+                    "successRoomActionCode": "le_pigeonnier_7",
+                    "failureRoomActionCode": "le_pigeonnier_8"
+                }
+            }
+        ]
+    }
+]

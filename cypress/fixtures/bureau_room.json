@@ -1,0 +1,22 @@
+[
+    {
+        "code": "les_bureaux_du_donjon_1",
+        "name": "Les bureaux du donjon",
+        "isStartRoomAction": "true",
+        "text": "Pour pouvoir accéder à la prochaine salle, il va falloir acquérir l'autorisation dans un labyrinthe administratif. C'est avec dégoût que vous vous rappellez de vos souvenirs concernant votre inscription à la mutuelle des aventurier.",
+        "choices": [
+            {
+                "text": "Prouver que la violence résout tout.",
+                "chanceAction": {
+                    "chance": 6,
+                    "successRoomActionCode": "les_bureaux_du_donjon_2",
+                    "failureRoomActionCode": "les_bureaux_du_donjon_3"
+                }
+            },
+            {
+                "text": "Prendre la paperasse du guichetier et aller au bureau suivant.",
+                "target": "les_bureaux_du_donjon_4"
+            }
+        ]
+    }
+]

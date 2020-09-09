@@ -266,6 +266,17 @@
             }
         ]
     },
+    "roomAction6_9": {
+        "code": "dortoir_des_serviteurs_9",
+        "name": "Dortoir des serviteurs",
+        "text": "Vous prennez l'objet et partez sans vous retourner.",
+        "addItem": "Baton",
+        "choices": [
+            {
+                "text": "Continuer"
+            }
+        ]
+    },
     "roomAction6_1": {
         "code": "dortoir_des_serviteurs_1",
         "name": "Dortoir des serviteurs",
@@ -291,6 +302,10 @@
                     "successRoomActionCode": "dortoir_des_serviteurs_4",
                     "failureRoomActionCode": "dortoir_des_serviteurs_5"
                 }
+            },
+            {
+                "text": "Ramasser un bout de bois qui traine et continuer en sifflotant.",
+                "target": "dortoir_des_serviteurs_9"
             }
         ]
     },
@@ -1397,6 +1412,13 @@
                     "chance": 3,
                     "successRoomActionCode": "le_pigeonnier_9",
                     "failureRoomActionCode": "le_pigeonnier_4"
+                }
+            },
+            {
+                "text": "Sortir le baton et leur montrer qui est le patron.",
+                "target": "le_pigeonnier_3",
+                "itemAction": {
+                    "item": "Baton"
                 }
             }
         ]

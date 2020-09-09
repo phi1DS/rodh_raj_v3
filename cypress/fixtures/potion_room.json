@@ -1,0 +1,22 @@
+[
+    {
+        "code": "salle_des_potions_1",
+        "name": "Salle des potions",
+        "isStartRoomAction": "true",
+        "text": "Si il n'y a pas d'obstacle particulier dans cette salle, vous vous arrêtez tout de même pour regarder autour de vous. Les murs sont couverts d'étagères pleines de flacons et pots, contenants toutes sortes de potions étranges, poisons perfides, onguents pour les bleus et sirops pour la toux.",
+        "choices": [
+            {
+                "text": "Se demander quelles sont ces potions en les examinant.",
+                "target": "salle_des_potions_2"
+            },
+            {
+                "text": "Boire la potion tête de mort.",
+                "target": "salle_des_potions_3"
+            },
+            {
+                "text": "Boire la potion dorée.",
+                "target": "salle_des_potions_4"
+            }
+        ]
+    }
+]

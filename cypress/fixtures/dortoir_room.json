@@ -1,0 +1,34 @@
+[
+    {
+        "code": "dortoir_des_serviteurs_1",
+        "name": "Dortoir des serviteurs",
+        "isStartRoomAction": "true",
+        "text": "En défonçant brutalement la porte vous mettez pied dans une salle senteur lavande. Le maître du Donjon à beau être un meurtrier, il lui tient à coeur de proposer des draps propres à ses serviteurs. Immédiatement après votre arrivée inattendue, les lutins présents dans la salle se sont tous figés en poussant des cris inquiets.",
+        "choices": [
+            {
+                "target": "dortoir_des_serviteurs_8",
+                "text": "Les massacrer !"
+            },
+            {
+                "text": "Tenter de leur parler.",
+                "chanceAction": {
+                    "chance": 3,
+                    "successRoomActionCode": "dortoir_des_serviteurs_2",
+                    "failureRoomActionCode": "dortoir_des_serviteurs_3"
+                }
+            },
+            {
+                "text": "Utiliser votre magie pour contrôler leur esprit faible.",
+                "chanceAction": {
+                    "chance": 3,
+                    "successRoomActionCode": "dortoir_des_serviteurs_4",
+                    "failureRoomActionCode": "dortoir_des_serviteurs_5"
+                }
+            },
+            {
+                "text": "Ramasser un bout de bois qui traine et continuer en sifflotant.",
+                "target": "dortoir_des_serviteurs_9"
+            }
+        ]
+    }
+]
