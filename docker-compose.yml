@@ -1,0 +1,23 @@
+services:
+  app:
+    user: "${LOCAL_UID}:${LOCAL_GID}"
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: laravel_app
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    env_file:
+      - .docker.env
+
+  nginx:
+    image: nginx:1.21-alpine
+    container_name: laravel_nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
