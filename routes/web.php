@@ -13,14 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('game');
-})->name('homepage');
+Route::get('/', fn() => view('game'))->name('homepage');
 
-Route::get('/dead', function () {
-    return view('dead');
-})->name('dead');
+Route::get('/dead', fn() => view('dead'))->name('dead');
 
-Route::get('/laravel', function () {
-    return view('welcome');
-})->name('laravel');
+Route::get('/laravel', fn() => view('welcome'))->name('laravel');

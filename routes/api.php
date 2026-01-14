@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('v1.0')->group(function () {
+Route::prefix('v1.0')->group(function (): void {
     Route::get('/room/get-start', [ApiV1RoomController::class, 'getStartRoom'])->name('api_get_start_room');
     Route::get('/room/get-end', [ApiV1RoomController::class, 'getEndRoom'])->name('api_get_end_room');
 

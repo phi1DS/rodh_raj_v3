@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    #[\Override]
     public function register()
     {
         //
@@ -24,8 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Inertia::version(function () {
-            return md5_file(public_path('mix-manifest.json'));
-        });
+        Inertia::version(fn() => md5_file(public_path('mix-manifest.json')));
     }
 }
